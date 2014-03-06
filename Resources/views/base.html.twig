@@ -1,0 +1,101 @@
+{# Base interface #}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>TOEIC Trainer / {% block title %}Home{% endblock %}</title>
+
+		<style type="text/css">
+			body {
+				min-height: 2000px;
+			}
+			.navbar-static-top {
+				margin-bottom: 19px;
+			}
+			footer {
+				padding-top: 19px;
+				color: #777;
+				border-top: 1px solid #e5e5e5;
+			}
+            .navbar {
+                float: left;
+                margin-right: 55px;
+            }
+            .panel {
+                min-height: 300px;
+            }
+            footer {
+                padding: 15px;
+            }
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						{# <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>#}
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href=" {{
+                        path('toeic_trainer_homepage') }}">TOEIC Trainer</a>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active">
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<a href="">Coucou</a>
+							</li>
+							<li>
+								<a href="">Coucou</a>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#">Sign in</a>
+							</li>
+                            <li>
+                                <a href="#">Sign up</a>
+                            </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="container">
+
+		{% block completebody %}
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<section>
+						{% block body %}
+						<header>
+							<h1>Welcome!</h1>
+						</header>
+						<p>You are on the homepage. What would you like to do?</p>
+						{% endblock %}
+					</section>
+				</div>
+			</div>
+
+		{% endblock %}
+
+		<footer>
+            <p>A bug ? Please contact us.</p>
+		</footer>
+
+		</div> {# /container #}
+
+	</body>
+</html>
