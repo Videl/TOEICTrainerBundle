@@ -6,66 +6,41 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('css/perso.css') }}" rel="stylesheet" media="screen">
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
 
-		<title>TOEIC Trainer / {% block title %}Home{% endblock %}</title>
+		<title>TOEIC Trainer / {% block title %}{% endblock %}</title>
 
-		<style type="text/css">
-			body {
-				min-height: 2000px;
-			}
-			.navbar-static-top {
-				margin-bottom: 19px;
-			}
-			footer {
-				padding-top: 19px;
-				color: #777;
-				border-top: 1px solid #e5e5e5;
-			}
-            .navbar {
-                float: left;
-                margin-right: 55px;
-            }
-            .panel {
-                min-height: 300px;
-            }
-            footer {
-                padding: 15px;
-            }
-		</style>
 	</head>
 	<body>
+	    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <!-- Include all JavaScripts, compiled by Assetic -->
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
 		<header>
-			<div class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
-						{# <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>#}
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							{#<span class="sr-only">Toggle navigation</span>#}
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href=" {{
-                        path('toeic_trainer_homepage') }}">TOEIC Trainer</a>
+						<a class="navbar-brand" href=" {{ path('toeic_trainer_homepage') }}">TOEIC Trainer</a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active">
-								<a href="#">Home</a>
-							</li>
-							<li>
-								<a href="">Coucou</a>
-							</li>
-							<li>
-								<a href="">Coucou</a>
-							</li>
+							<li class="active"></span><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-music"></span>  Listening</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-edit"></span>  Reading</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="#">Sign in</a>
-							</li>
-                            <li>
-                                <a href="#">Sign up</a>
-                            </li>
+							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>  Sign in</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>  Sign up</a></li>
 						</ul>
 					</div>
 				</div>
@@ -83,7 +58,7 @@
 						<header>
 							<h1>Welcome!</h1>
 						</header>
-						<p>You are on the homepage. What would you like to do?</p>
+						<p>You are on the homepage. What would you like to do?</p>					
 						{% endblock %}
 					</section>
 				</div>
