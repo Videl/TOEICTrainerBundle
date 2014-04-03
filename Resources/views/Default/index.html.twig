@@ -5,6 +5,7 @@
       <h1>Welcome to TOEIC Trainer !</h1>
       <p>TOEIC Trainer is a website to help you improve your english by doing TOEIC like exercises. Like the real TOEIC, our test his constituted of two distinct part : a Listening part and a Reading part.</p>
     </div>
+    {% block body %}
     <div class="row">
         <div class="col-sm-6">
             <h4>Listening part</h4>
@@ -14,5 +15,6 @@
             <h4>Reading part</h4>
             <p>The reading part is composed of three different exercises. The first exercise consist in filling the blanks in incomplete sentences. In the second exercise we have to fill the blanks in a whole text. And finally in the last exercise we have multiple documents and questions and we have to answer correctly the question using the information in the documents.</p>
         </div>
+        {% endblock %}
     </div>
 {% endblock %}
