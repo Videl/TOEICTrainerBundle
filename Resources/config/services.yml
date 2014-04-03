@@ -1,7 +1,24 @@
 parameters:
+    tn.toeic_trainer.dochole.flow.class: TN\TOEICTrainerBundle\Form\CreateDocHolesFlow
+    tn.toeic_trainer.dochole.form.class: TN\TOEICTrainerBundle\Form\DocHolesType
 #    toeic_trainer.example.class: TN\TOEICTrainerBundle\Example
 
 services:
+    tn.toeic_trainer.dochole.form:
+        class: "%tn.toeic_trainer.dochole.form.class%
+        tag:
+            name: "form.type"
+            alias: "tn_toeictrainerbundle_docholes"
+
+    tn.toeic_trainer.dochole.flow:
+        class: "%tn.toeic_trainer.dochole.flow.class%
+        parent: "craue.form.flow"
+        scope: "request"
+        calls:
+        	- [setFormType, ["myCompany.form.createVehicle"]]
+        tag:
+            name: "form.type"
+            alias: "docholes_flow"
 #    toeic_trainer.example:
 #        class: %toeic_trainer.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

@@ -14,12 +14,20 @@ class DocHolesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('document')
-            ->add('wordDocHoles', 'text', array(
-                'label' => 'Choose the holes that can be hidden:'
-                ))
-        ;
+        switch($options['flow_step'])
+        {
+            case 1:
+                $builder
+                    ->add('document');
+                break;
+
+            case 2:
+                $builder
+                    ->add('wordDocHoles', 'text', array(
+                        'label' => 'Choose the holes that can be hidden:'
+                        ));
+                break;
+        }
     }
     
     /**

@@ -35,22 +35,25 @@ class DocHolesController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new DocHoles();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        return $this->processFlow(new DocHoles(), $this->get('tn.toeic_trainer.dochole.form'));
 
-            return $this->redirect($this->generateUrl('docholes_show', array('id' => $entity->getId())));
-        }
+        // $entity = new DocHoles();
+        // $form = $this->createCreateForm($entity);
+        // $form->handleRequest($request);
 
-        return $this->render('TOEICTrainerBundle:DocHoles:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        // if ($form->isValid()) {
+        //     $em = $this->getDoctrine()->getManager();
+        //     $em->persist($entity);
+        //     $em->flush();
+
+        //     return $this->redirect($this->generateUrl('docholes_show', array('id' => $entity->getId())));
+        // }
+
+        // return $this->render('TOEICTrainerBundle:DocHoles:new.html.twig', array(
+        //     'entity' => $entity,
+        //     'form'   => $form->createView(),
+        // ));
     }
 
     /**
@@ -219,5 +222,33 @@ class DocHolesController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    protected function processFlow($formData, FormFlowInterface $flow)
+    {
+        $flow->bind($formData);
+
+        $form = $flow->createForm();
+        if ($flow->isValid($form)) {
+            $flow->saveCurrentStepData($form);
+
+            if ($flow->nextStep()) {
+                // create form for next step
+                $form = $flow->createForm();
+            } else {
+                // flow finished
+                // ...
+
+                $flow->reset();
+
+                return $this->redirect($this->generateUrl('_FormFlow_start'));
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'flow' => $flow,
+            'formData' => $formData,
+            );
     }
 }

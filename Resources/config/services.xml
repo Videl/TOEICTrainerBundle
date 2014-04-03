@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Author: Christian Raue <christian.raue@gmail.com>
+Author: Marcus Stöhr <dafish@soundtrack-board.de>
+Copyright: 2011-2014 Christian Raue
+License: http://opensource.org/licenses/mit-license.php MIT License
+-->
+<container xmlns="http://symfony.com/schema/dic/services"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="tn.toeic_trainer.dochole.form"
+                class="TN\TOEICTrainerBundle\Form\DocHolesType">
+            <tag name="form.type" alias="tn_toeictrainerbundle_docholes" />
+        </service>
+
+        <service id="tn.toeic_trainer.dochole.flow"
+                class="TN\TOEICTrainerBundle\Form\CreateDocHolesFlow"
+                parent="craue.form.flow"
+                scope="request">
+            <call method="setFormType">
+                <argument type="service" id="tn.toeic_trainer.dochole.form" />
+            </call>
+        </service>
+    </services>
+
+</container>
