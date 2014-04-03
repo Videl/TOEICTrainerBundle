@@ -101,3 +101,9 @@ Then add the bundle's routes. Head to `path/app/config/routing.yml` and add the 
     resource: "@TOEICTrainerBundle/Resources/config/routing.yml"
     prefix:	/toeic
 ```
+
+Finally, create symbolic link from `path/web/bundles/toeictrainer` to `path/TN/TOEICTrainerBundle/Resources` by running this command :
+
+```
+php app/console assets:install web/ --symlink
+```
