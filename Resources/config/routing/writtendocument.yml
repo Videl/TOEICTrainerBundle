@@ -1,0 +1,30 @@
+writtendocument:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:index" }
+
+writtendocument_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:show" }
+
+writtendocument_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:new" }
+
+writtendocument_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:create" }
+    requirements: { _method: post }
+
+writtendocument_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:edit" }
+
+writtendocument_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:update" }
+    requirements: { _method: post|put }
+
+writtendocument_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:WrittenDocument:delete" }
+    requirements: { _method: post|delete }

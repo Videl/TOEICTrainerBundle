@@ -1,3 +1,11 @@
 toeic_trainer_homepage:
     pattern:  /
     defaults: { _controller: TOEICTrainerBundle:Default:home }
+
+TOEICTrainerBundle_writtendocument:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/writtendocument.yml"
+        prefix:   /writtendocument
+
+TOEICTrainerBundle_docholes:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/docholes.yml"
+        prefix:   /docholes
