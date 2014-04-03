@@ -96,4 +96,9 @@ class WrittenDocument
     {
         return $this->published;
     }
+
+    public function __toString()
+    {
+        return $this->document;
+    }
 }

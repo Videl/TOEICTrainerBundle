@@ -1,0 +1,30 @@
+docholes:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:index" }
+
+docholes_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:show" }
+
+docholes_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:new" }
+
+docholes_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:create" }
+    requirements: { _method: post }
+
+docholes_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:edit" }
+
+docholes_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:update" }
+    requirements: { _method: post|put }
+
+docholes_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:DocHoles:delete" }
+    requirements: { _method: post|delete }
