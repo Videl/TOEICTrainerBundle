@@ -1,0 +1,48 @@
+body
+{
+  background-image: url('../img/dark_geometric.png');
+}
+
+.navbar-brand
+{
+  background-image: url('../img/TOEICtrainer3.svg');
+  background-repeat: no-repeat;
+  width: 170px;
+  height: 50px;
+  background-position:center center;
+}
+
+.jumbotron > h1, .jumbotron > p
+{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron 
+{ 
+  color: white;
+  background-color: black;
+  border: solid black 1px;
+  background: url('../img/london2.jpg') no-repeat center fixed; 
+  -webkit-background-size: cover; /* pour Chrome et Safari */
+  -moz-background-size: cover; /* pour Firefox */
+  -o-background-size: cover; /* pour Opera */
+  background-size: cover; /* version standardisée */
+  opacity:0.9;
+}
+
+.panel
+{
+  border-radius: 10px;
+  opacity:0.8;
+}
+
+.panel-heading
+{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+footer 
+{
+  padding-top: 10px;
+}
