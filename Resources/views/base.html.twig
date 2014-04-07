@@ -16,35 +16,8 @@
 
 	</head>
 	<body>
-	    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <!-- Include all JavaScripts, compiled by Assetic -->
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
 		<header>
-			<div class="navbar navbar-inverse navbar-static-top" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-							{#<span class="sr-only">Toggle navigation</span>#}
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href=" {{ path('toeic_trainer_homepage') }}"></a>
-					</div>
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li class="active"></span><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-music"></span>  Listening</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-edit"></span>  Reading</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>  Sign in</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>  Sign up</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+			{% include 'TOEICTrainerBundle:Website:navbar.html.twig' %}
 		</header>
 
 		<div class="container">
@@ -66,11 +39,20 @@
 
 		{% endblock %}
 
-		<footer>
-            <p>A bug ? Please contact us.</p>
-		</footer>
+		{% include 'TOEICTrainerBundle:Website:footer.html.twig' %}
 
 		</div> {# /container #}
+
+		{# Javascript related stuff #}
+		{% block all_javascripts %}
+		    {# jQuery (necessary for Bootstraps JavaScript plugins) #}
+	        <script src="{{ asset('js/jquery.js') }}"></script>
+	        {# Include all JavaScripts, compiled by Assetic #}
+	        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+			{% block javascripts %}
+			{% endblock %}
+		{% endblock %}
 
 	</body>
 </html>
