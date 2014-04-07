@@ -16,8 +16,13 @@ class DocHolesType extends AbstractType
     {
         $builder
             ->add('document')
-            ->add('wordDocHoles', 'text', array(
-                'label' => 'Choose the holes that can be hidden:'
+            ->add('wordDocHoles', 'collection', array(
+                'label' => 'Choose the holes that can be hidden:',
+                'type' => 'integer',
+                'allow_add' => true,
+                'by_reference' => false,
+                'allow_delete' => true,
+
                 ))
         ;
     }

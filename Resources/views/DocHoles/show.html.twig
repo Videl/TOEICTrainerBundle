@@ -10,8 +10,16 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
+                <th>Document</th>
+                <td>{{ entity.document }}</td>
+            </tr>
+            <tr>
                 <th>Worddocholes</th>
-                <td>{{ entity.wordDocHoles }}</td>
+                <td>
+                    {% for hole in entity.wordDocHoles %}
+                        {{ hole }},
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>

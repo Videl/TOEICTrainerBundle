@@ -32,9 +32,14 @@ class DocHoles
     /**
      * @var string
      *
-     * @ORM\Column(name="WordDocHoles", type="text")
+     * @ORM\Column(name="doclines", type="array")
      */
     private $wordDocHoles;
+
+    public function __construct()
+    {
+        $this->wordDocHoles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -47,28 +52,6 @@ class DocHoles
         return $this->id;
     }
 
-    /**
-     * Set wordDocHoles
-     *
-     * @param string $wordDocHoles
-     * @return DocHoles
-     */
-    public function setWordDocHoles($wordDocHoles)
-    {
-        $this->wordDocHoles = $wordDocHoles;
-
-        return $this;
-    }
-
-    /**
-     * Get wordDocHoles
-     *
-     * @return string 
-     */
-    public function getWordDocHoles()
-    {
-        return $this->wordDocHoles;
-    }
 
     /**
      * Set document
@@ -91,5 +74,28 @@ class DocHoles
     public function getDocument()
     {
         return $this->document;
+    }
+
+    /**
+     * Set wordDocHoles
+     *
+     * @param array $wordDocHoles
+     * @return DocHoles
+     */
+    public function setWordDocHoles($wordDocHoles)
+    {
+        $this->wordDocHoles = $wordDocHoles;
+
+        return $this;
+    }
+
+    /**
+     * Get wordDocHoles
+     *
+     * @return array 
+     */
+    public function getWordDocHoles()
+    {
+        return $this->wordDocHoles;
     }
 }
