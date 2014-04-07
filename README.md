@@ -27,7 +27,7 @@ php composer.phar create-project symfony/framework-standard-edition path/ 2.4.2
 
 Install this bundle. Create a directory `TN` in `path/src/`, then clone this repository:
 ```bash
-    git clone https://github.com/TelecomNancyNet/TOEICTrainerBundle.git
+git clone https://github.com/TelecomNancyNet/TOEICTrainerBundle.git
 ```
 4. Install BraincraftedBootstrapBundle
 --
@@ -83,6 +83,7 @@ class AppKernel extends Kernel
 Finally, if you use Assetic, you can run this command :
 ```php
 php app/console assetic:dump
+php app/console assets:install
 ```
 
 If it is not the case, see further informations see in [BraincraftedBootstrapBundle website's](http://bootstrap.braincrafted.com/).
@@ -92,12 +93,12 @@ If it is not the case, see further informations see in [BraincraftedBootstrapBun
 
 Integrate into your working Symfony installation: edit `path/src/AppKernel.php` and add the following code in the $bundles array:
 ```php
-    new TN\TOEICTrainerBundle\TOEICTrainerBundle(),
+new TN\TOEICTrainerBundle\TOEICTrainerBundle(),
 ```
 
 Then add the bundle's routes. Head to `path/app/config/routing.yml` and add the following:
 ```yaml
-    toeic_t:
+toeic_t:
     resource: "@TOEICTrainerBundle/Resources/config/routing.yml"
     prefix:	/toeic
 ```
