@@ -9,3 +9,7 @@ TOEICTrainerBundle_writtendocument:
 TOEICTrainerBundle_docholes:
         resource: "@TOEICTrainerBundle/Resources/config/routing/docholes.yml"
         prefix:   /docholes
+
+TOEICTrainerBundle_ListeningPhotographs:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/listeningphotographs.yml"
+        prefix:   /listeningphotographs

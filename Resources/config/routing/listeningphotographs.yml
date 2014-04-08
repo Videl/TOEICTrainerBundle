@@ -1,0 +1,3 @@
+listeningphotographs:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:index" }
