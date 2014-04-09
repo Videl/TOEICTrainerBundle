@@ -17,6 +17,10 @@
                 <th>Type</th>
                 <td>{{ entity.type }}</td>
             </tr>
+            <tr>
+                <th>File</th>
+                <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.getWebPath()}) }}"></audio></td>
+            </tr>
         </tbody>
     </table>
 

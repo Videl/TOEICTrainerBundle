@@ -17,7 +17,7 @@ class AudioFileType extends AbstractType
         $builder
             ->add('audioTranscript')
             ->add('type')
-            ->add('file')
+            ->add('file', 'file')
         ;
     }
     

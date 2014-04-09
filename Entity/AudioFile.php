@@ -3,11 +3,12 @@
 namespace TN\TOEICTrainerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validation\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * AudioFile
- *
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TN\TOEICTrainerBundle\Entity\AudioFileRepository")
  */
@@ -23,7 +24,12 @@ class AudioFile
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="TN\TOEICTrainerBundle\Entity\File", cascade={"persist"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+
+    /**
+     * @Assert\File(maxSize="6000000")
      */
     private $file;
 
@@ -55,7 +61,7 @@ class AudioFile
     /**
      * Set file
      *
-     * @param string $file
+     * @param File $file
      * @return AudioFile
      */
     public function setFile($file)
@@ -119,5 +125,61 @@ class AudioFile
     public function getType()
     {
         return $this->type;
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+ 
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'bundles/toeictrainer/uploads/audioFiles';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+    }
+ 
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+ 
+        $this->file->move($this->getUploadRootDir(), $this->path);
+ 
+        unset($this->file);
+    }
+ 
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
     }
 }
