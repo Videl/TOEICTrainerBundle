@@ -100,6 +100,18 @@ class AudioFileController extends Controller
     }
 
     /**
+     * Displays a form to create a new sound.
+     *
+     * @Route("/newSound", name="audiofile_newSound")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newSoundAction()
+    {
+        return array();
+    }
+
+    /**
      * Finds and displays a AudioFile entity.
      *
      * @Route("/{id}", name="audiofile_show")
