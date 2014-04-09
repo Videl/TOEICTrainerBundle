@@ -10,6 +10,11 @@ TOEICTrainerBundle_docholes:
         resource: "@TOEICTrainerBundle/Resources/config/routing/docholes.yml"
         prefix:   /docholes
 
-TOEICTrainerBundle_ListeningPhotographs:
+TOEICTrainerBundle_listeningphotographs:
         resource: "@TOEICTrainerBundle/Resources/config/routing/listeningphotographs.yml"
         prefix:   /listeningphotographs
+
+TOEICTrainerBundle_audiofile:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/audiofile.yml"
+        prefix:   /audiofile
+        

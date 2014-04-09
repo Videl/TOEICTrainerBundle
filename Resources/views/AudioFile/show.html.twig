@@ -1,0 +1,36 @@
+{% extends 'TOEICTrainerBundle::base.html.twig' %}
+
+{% block body -%}
+    <h1>AudioFile</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Audiotranscript</th>
+                <td>{{ entity.audioTranscript }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ entity.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('audiofile') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('audiofile_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

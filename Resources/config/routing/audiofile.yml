@@ -1,0 +1,30 @@
+audiofile:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:index" }
+
+audiofile_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:new" }
+
+audiofile_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:show" }
+
+audiofile_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:create" }
+    requirements: { _method: post }
+
+audiofile_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:edit" }
+
+audiofile_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:update" }
+    requirements: { _method: post|put }
+
+audiofile_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:AudioFile:delete" }
+    requirements: { _method: post|delete }
