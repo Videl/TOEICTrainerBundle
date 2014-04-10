@@ -29,7 +29,11 @@ class AudioFile
     public $path;
 
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(
+     * maxSize="6000000",
+     * mimeTypes = {"audio/mpeg"},
+     * mimeTypesMessage = "The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}"
+     * )
      */
     private $file;
 
@@ -67,7 +71,13 @@ class AudioFile
     public function setFile($file)
     {
         $this->file = $file;
-
+        // Remove old file
+        if ($this->path) {
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+        }
+        $this->path = $this->getWebPath();
         return $this;
     }
 

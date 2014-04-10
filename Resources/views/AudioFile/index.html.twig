@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>AudioFile list</h1>
 
-    <table class="records_list">
+    <table class="records_list table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,7 +34,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+        <br>
         <ul>
         <li>
             <a href="{{ path('audiofile_new') }}">
