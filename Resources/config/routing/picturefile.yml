@@ -1,0 +1,30 @@
+picturefile:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:index" }
+
+picturefile_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:new" }
+    
+picturefile_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:show" }
+
+picturefile_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:create" }
+    requirements: { _method: post }
+
+picturefile_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:edit" }
+
+picturefile_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:update" }
+    requirements: { _method: post|put }
+
+picturefile_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:PictureFile:delete" }
+    requirements: { _method: post|delete }

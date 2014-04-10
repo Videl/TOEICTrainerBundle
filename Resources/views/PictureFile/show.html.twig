@@ -1,0 +1,32 @@
+{% extends 'TOEICTrainerBundle::base.html.twig' %}
+
+{% block body -%}
+    <h1>PictureFile</h1>
+
+    <table class="record_properties table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td><img controls src="{{ asset('%path%')|replace({'%path%': entity.getWebPath()}) }}"></img></td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('picturefile') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('picturefile_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
