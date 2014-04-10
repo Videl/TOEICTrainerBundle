@@ -17,4 +17,7 @@ TOEICTrainerBundle_listeningphotographs:
 TOEICTrainerBundle_audiofile:
         resource: "@TOEICTrainerBundle/Resources/config/routing/audiofile.yml"
         prefix:   /audiofile
-        
+
+TOEICTrainerBundle_exercices:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/exercices.yml"
+        prefix:   /exercices

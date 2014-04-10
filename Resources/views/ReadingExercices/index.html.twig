@@ -1,0 +1,27 @@
+{% extends 'TOEICTrainerBundle::base.html.twig' %}
+
+{% block title %}{{ parent() }}Description of Reading Exercices{% endblock %}
+{% block completebody %}
+    <div class="jumbotron">
+        <h1>Exercices</h1>
+        <p>Train yourself!</p>
+    </div>
+    {% block body %}
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4 class="panel-title">Reading part</h4>
+              </div>
+                <div class="panel-body">
+
+                    <h2>Incomplete sentences</h2>
+                    <p>Fill the hole in the sentence with the correct word.</p>
+
+                    <h2>Text completion</h2>
+                    <p>Fill the holes in the documents with the correct words.</p>
+
+                    <h2>Reading comprehension</h2>
+                    <p>Find information in the documents to answer the questions.</p>
+                </div>
+            </div>
+    {% endblock %}
+{% endblock %}

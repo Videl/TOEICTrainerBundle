@@ -8,13 +8,80 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href=" {{ path('toeic_trainer_homepage') }}"></a>
+			<a class="navbar-brand" href="{{ path('toeic_trainer_homepage') }}"></a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-music"></span>  Listening</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-edit"></span>  Reading</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-music"></span>  Listening exercices 
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">						
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.listening') }}">
+								Open complete description
+							</a>
+						</li>		
+						<li class="divider"></li>						
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.listening.photographs') }}"><span class="glyphicon glyphicon-music"></span>  Photographs</a>
+						</li>				
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.listening.qa') }}"><span class="glyphicon glyphicon-music"></span>  Questions/Answers</a>
+						</li>				
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.listening.conversations') }}"><span class="glyphicon glyphicon-music"></span>  Conversations</a>
+						</li>				
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.listening.talks') }}"><span class="glyphicon glyphicon-music"></span>  Talks</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-edit"></span>  Reading exercices
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">
+								Open complete description
+							</a>
+						</li>		
+						<li class="divider"></li>		
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_sentences') }}"><span class="glyphicon glyphicon-music"></span>  
+								Fill incomplete sentences
+							</a>
+						</li>				
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_documents') }}"><span class="glyphicon glyphicon-music"></span>  
+								Fill incomplete documents</a>
+						</li>				
+						<li>
+							<a href="{{ path('tn.toeic.exercices.main_page.reading.qa_documents') }}"><span class="glyphicon glyphicon-music"></span>  
+								Answer questions related to documents
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-heart"></span>  Participate! <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="javascript:void(0)">Create a reading exercice!</a></li>
+						<li><a href="#">Add a new written document</a></li>
+						<li><a href="#">Specify some hidden words for a document</a></li>
+						<li class="divider"></li>
+						<li><a href="javascript:void(0)">Create a listening exercice!</a></li>
+						<li><a href="#">Give us a recording for an exercice</a></li>
+						<li><a href="#">Add questions for a recording</a></li>
+						<li><a href="#">Record your voice</a></li>
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>   Sign in</a></li>

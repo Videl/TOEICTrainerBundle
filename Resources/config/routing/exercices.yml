@@ -1,0 +1,37 @@
+tn.toeic.exercices.main_page.listening:
+    pattern:  /listening
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:index" }
+
+tn.toeic.exercices.main_page.listening.photographs:
+    pattern:  /listening/photographs
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:photographs" }
+
+tn.toeic.exercices.main_page.listening.qa:
+    pattern:  /listening/questions_and_answers
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:qa" }
+
+tn.toeic.exercices.main_page.listening.conversations:
+    pattern:  /listening/conversations
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:conversations" }
+
+tn.toeic.exercices.main_page.listening.talks:
+    pattern:  /listening/talks
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:talks" }
+
+
+tn.toeic.exercices.main_page.reading:
+    pattern:  /reading
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:index" }
+
+tn.toeic.exercices.main_page.reading.inc_sentences:
+    pattern:  /reading/inc_sentences
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:inc_sentences" }
+
+tn.toeic.exercices.main_page.reading.inc_documents:
+    pattern:  /reading/inc_documents
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:inc_documents" }
+
+tn.toeic.exercices.main_page.reading.qa_documents:
+    pattern:  /reading/qa_documents
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:qa_documents" }
+

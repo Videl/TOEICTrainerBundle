@@ -1,0 +1,30 @@
+{% extends 'TOEICTrainerBundle::base.html.twig' %}
+
+{% block title %}{{ parent() }}Description of Listening Exercices{% endblock %}
+{% block completebody %}
+    <div class="jumbotron">
+        <h1>Exercices</h1>
+        <p>Train yourself!</p>
+    </div>
+    {% block body %}
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4 class="panel-title">Listening part</h4>
+              </div>
+                <div class="panel-body">
+
+                    <h2>Photographs</h2>
+                    <p>Find the description that best correspond to the photography.</p>
+
+                    <h2>Questions/Answers</h2>
+                    <p>Find the best answer for the question.</p>
+
+                    <h2>Questions/Answers</h2>
+                    <p>Find the best answer for the question.</p>
+
+                    <h2>Talks</h2>
+                    <p>Listen to the talk and find the answers to the questions.</p>
+                </div>
+            </div>
+    {% endblock %}
+{% endblock %}
