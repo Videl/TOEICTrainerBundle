@@ -1,27 +1,56 @@
-{% extends 'TOEICTrainerBundle::base.html.twig' %}
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
 
 {% block title %}{{ parent() }}Description of Reading Exercices{% endblock %}
-{% block completebody %}
-    <div class="jumbotron">
-        <h1>Exercices</h1>
-        <p>Train yourself!</p>
+
+{% block page_title %}
+    Exercices
+{% endblock %}
+
+{% block page_subtitle %}
+    Train yourself!
+{% endblock %}
+
+{% block main_content %}
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4 class="panel-title">Reading part</h4>
+      </div>
+        <div class="panel-body">
+
+            <h2>Incomplete sentences</h2>
+            <p>Fill the hole in the sentence with the correct word.</p>
+
+            <h2>Text completion</h2>
+            <p>Fill the holes in the documents with the correct words.</p>
+
+            <h2>Reading comprehension</h2>
+            <p>Find information in the documents to answer the questions.</p>
+        </div>
     </div>
-    {% block body %}
-            <div class="panel panel-info">
-              <div class="panel-heading">
-                <h4 class="panel-title">Reading part</h4>
-              </div>
-                <div class="panel-body">
+{% endblock %}
 
-                    <h2>Incomplete sentences</h2>
-                    <p>Fill the hole in the sentence with the correct word.</p>
-
-                    <h2>Text completion</h2>
-                    <p>Fill the holes in the documents with the correct words.</p>
-
-                    <h2>Reading comprehension</h2>
-                    <p>Find information in the documents to answer the questions.</p>
-                </div>
-            </div>
-    {% endblock %}
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Reading part</h4>
+        </div>
+        <div class="panel-body">
+            <p>The reading part is composed of three different exercises. </p>
+            <ul>
+                <li>
+                    The first exercise consists in filling the 
+                    blanks in incomplete sentences.
+                </li>
+                <li>
+                    In the second exercise, we have to fill the 
+                    blanks in a whole text.
+                </li>
+                <li>
+                    And finally in the last exercise, we have multiple 
+                    documents and questions, of which you have to answer 
+                    correctly using the information in the documents.
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
