@@ -20,7 +20,7 @@
 		</header>
 
 		<div class="container">
-		
+
 	    {% block jumbotron %}
 	        <div class="jumbotron">
 	            <h1>Welcome to TOEIC Trainer !</h1>
@@ -30,19 +30,19 @@
 		
 		{% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
 
-		{% block body %}
-
+		{% block completebody %}
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<section>
-							<header>
-								<h1>Welcome!</h1>
-							</header>
-							<p>You are on the homepage. What would you like to do?</p>
-					</section>
+					{% block body %}
+						<section>
+								<header>
+									<h1>Welcome!</h1>
+								</header>
+								<p>You are on the homepage. What would you like to do?</p>
+						</section>
+					{% endblock %}
 				</div>
 			</div>
-
 		{% endblock %}
 
 		{% include 'TOEICTrainerBundle:Website:footer.html.twig' %}

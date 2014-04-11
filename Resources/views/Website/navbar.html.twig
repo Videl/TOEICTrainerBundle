@@ -52,16 +52,16 @@
 						</li>		
 						<li class="divider"></li>		
 						<li>
-							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_sentences') }}"><span class="glyphicon glyphicon-music"></span>  
+							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_sentences') }}"><span class="glyphicon glyphicon-edit"></span>  
 								Fill incomplete sentences
 							</a>
 						</li>				
 						<li>
-							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_documents') }}"><span class="glyphicon glyphicon-music"></span>  
+							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_documents') }}"><span class="glyphicon glyphicon-edit"></span>  
 								Fill incomplete documents</a>
 						</li>				
 						<li>
-							<a href="{{ path('tn.toeic.exercices.main_page.reading.qa_documents') }}"><span class="glyphicon glyphicon-music"></span>  
+							<a href="{{ path('tn.toeic.exercices.main_page.reading.qa_documents') }}"><span class="glyphicon glyphicon-edit"></span>  
 								Answer questions related to documents
 							</a>
 						</li>
@@ -72,12 +72,21 @@
 						<span class="glyphicon glyphicon-heart"></span>  Participate! <b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0)">Create a reading exercice!</a></li>
-						<li><a href="#">Add a new written document</a></li>
-						<li><a href="#">Specify some hidden words for a document</a></li>
+						<li>
+							<a href="javascript:void(0)"><span class="glyphicon glyphicon-edit"></span>
+								Create a reading exercice!
+							</a>
+						</li>
+						<li><a href="{{ path('writtendocument_new') }}">Add a new written document</a></li>
+						<li><a href="{{path('docholes_new') }}">Specify some hidden words for a document</a></li>
+						<li><a href="">Add questions to a document</a></li>
 						<li class="divider"></li>
-						<li><a href="javascript:void(0)">Create a listening exercice!</a></li>
-						<li><a href="#">Give us a recording for an exercice</a></li>
+						<li>
+							<a href="{{path('listeningphotographs_new') }}"><span class="glyphicon glyphicon-music"></span>
+								Create a photograph exercice!
+							</a>
+						</li>
+						<li><a href="{{ path('audiofile_newSound') }}">Create a new recording for an exercice</a></li>
 						<li><a href="#">Add questions for a recording</a></li>
 						<li><a href="#">Record your voice</a></li>
 					</ul>
