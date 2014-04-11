@@ -15,6 +15,7 @@ class AudioFileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name')
             ->add('audioTranscript')
             ->add('type', 'choice', array(
                 'choices' => array(

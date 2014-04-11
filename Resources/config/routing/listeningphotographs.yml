@@ -1,3 +1,30 @@
 listeningphotographs:
     pattern:  /
     defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:index" }
+
+listeningphotographs_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:new" }
+    
+listeningphotographs_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:show" }
+
+listeningphotographs_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:create" }
+    requirements: { _method: post }
+
+listeningphotographs_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:edit" }
+
+listeningphotographs_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:update" }
+    requirements: { _method: post|put }
+
+listeningphotographs_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:delete" }
+    requirements: { _method: post|delete }

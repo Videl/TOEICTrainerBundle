@@ -1,5 +1,43 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-  <h1> ListeningPhotographs </h1>
-{% endblock %}
+    <h1>ListeningPhotographs list</h1>
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Picture</th>
+                <th>Correct Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('listeningphotographs_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><img src="{{ asset('%path%')|replace({'%path%': entity.picture.getWebPath()}) }}"></img></td>
+                <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.correctDescription.getWebPath()}) }}"></audio></td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('listeningphotographs_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('listeningphotographs_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('listeningphotographs_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

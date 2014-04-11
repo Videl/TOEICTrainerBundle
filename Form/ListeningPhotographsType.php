@@ -6,17 +6,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PictureFileType extends AbstractType
+class ListeningPhotographsType extends AbstractType
 {
-    /**
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text')
-            ->add('file', 'file')
+            ->add('picture')
+            ->add('correctDescription')
         ;
     }
     
@@ -26,7 +26,7 @@ class PictureFileType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TN\TOEICTrainerBundle\Entity\PictureFile'
+            'data_class' => 'TN\TOEICTrainerBundle\Entity\ListeningPhotographs'
         ));
     }
 
@@ -35,6 +35,6 @@ class PictureFileType extends AbstractType
      */
     public function getName()
     {
-        return 'tn_toeictrainerbundle_picturefile';
+        return 'tn_toeictrainerbundle_listeningphotographs';
     }
 }

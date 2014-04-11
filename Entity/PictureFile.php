@@ -30,6 +30,13 @@ class PictureFile
     private $path;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
      * @Assert\Image(
      * maxWidth="500",
      * maxHeight="500",
@@ -70,6 +77,29 @@ class PictureFile
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return PictureFile
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -156,5 +186,10 @@ class PictureFile
         if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

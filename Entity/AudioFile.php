@@ -29,6 +29,11 @@ class AudioFile
     public $path;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    public $name;
+
+    /**
      * @Assert\File(
      * maxSize="6000000",
      * mimeTypes = {"audio/mpeg"},
@@ -89,6 +94,29 @@ class AudioFile
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return AudioFile
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -191,5 +219,10 @@ class AudioFile
         if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -1,7 +1,7 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>PictureFile</h1>
+    <h1>ListeningPhotographs</h1>
 
     <table class="record_properties table">
         <tbody>
@@ -10,24 +10,24 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
+                <th>Picture</th>
+                <td><img src="{{ asset('%path%')|replace({'%path%': entity.picture.getWebPath()}) }}"></img></td>
             </tr>
             <tr>
-                <th>Picture</th>
-                <td><img src="{{ asset('%path%')|replace({'%path%': entity.getWebPath()}) }}"></img></td>
+                <th>Correct Description</th>
+                <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.correctDescription.getWebPath()}) }}"></audio></td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('picturefile') }}">
+        <a href="{{ path('listeningphotographs') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('picturefile_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('listeningphotographs_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
