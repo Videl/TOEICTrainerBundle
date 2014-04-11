@@ -1,6 +1,6 @@
 {% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
 
-{% block title %}{{ parent() }}Description of Reading Exercices{% endblock %}
+{% block title %}{{ parent() }}Reading / Document Completion{% endblock %}
 
 {% block page_title %}
     Exercices
@@ -12,18 +12,26 @@
 
 {% block main_content %}
     <div class="panel panel-info">
-      <div class="panel-heading">
-        <h4 class="panel-title">Reading part</h4>
-      </div>
         <div class="panel-body">
-            <h2>Incomplete sentences</h2>
-            <p>Fill the hole in the sentence with the correct word.</p>
+            <h2>Text Completion <small>Reading exercice</small></h2>
+            <hr />
+            <p>Welcome in one of the three reading exercices. You are in the <strong>training area</strong>.</p>
+            <p>You will be shown a random exercice to complete.</p>
 
-            <h2>Text completion</h2>
-            <p>Fill the holes in the documents with the correct words.</p>
+            {# TODO #}
+            <p>Remember that you can see your score in your profile account.</p>
+        </div>
+    </div>
 
-            <h2>Reading comprehension</h2>
-            <p>Find information in the documents to answer the questions.</p>
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            Please review the rules on the right, in the bold text.
+        </div>
+    </div>
+
+    <div class="panel panel-danger">
+        <div class="panel-body">
+            <h2><a href="{{ path('tn.toeic.exercices.main_page.reading.inc_documents.train') }}">Begin</a></h2>
         </div>
     </div>
 {% endblock %}
@@ -40,9 +48,9 @@
                     The first exercise consists in filling the 
                     blanks in incomplete sentences.
                 </li>
-                <li>
-                    In the second exercise, we have to fill the 
-                    blanks in a whole text.
+                <li class="lead">
+                    <strong>In the second exercise, we have to fill the 
+                    blanks in a whole text.</strong>
                 </li>
                 <li>
                     And finally in the last exercise, we have multiple 

@@ -150,6 +150,7 @@ class DocHolesController extends Controller
 
         return $form;
     }
+    
     /**
      * Edits an existing DocHoles entity.
      *

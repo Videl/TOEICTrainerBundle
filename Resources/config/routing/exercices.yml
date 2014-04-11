@@ -18,19 +18,25 @@ tn.toeic.exercices.main_page.listening.talks:
     pattern:  /listening/talks
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:talks" }
 
-
 tn.toeic.exercices.main_page.reading:
     pattern:  /reading
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:index" }
 
+# Reading: Word Holes in a sentence
 tn.toeic.exercices.main_page.reading.inc_sentences:
     pattern:  /reading/inc_sentences
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:inc_sentences" }
 
+# Reading: Word Holes in a document
 tn.toeic.exercices.main_page.reading.inc_documents:
     pattern:  /reading/inc_documents
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:inc_documents" }
 
+tn.toeic.exercices.main_page.reading.inc_documents.train:
+    pattern:  /reading/inc_documents/train
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:show" }
+
+# Reading: Questions/answers in a document
 tn.toeic.exercices.main_page.reading.qa_documents:
     pattern:  /reading/qa_documents
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:qa_documents" }

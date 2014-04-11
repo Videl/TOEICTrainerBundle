@@ -1,7 +1,5 @@
 {% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
 
-{% block title %}{{ parent() }}Description of Reading Exercices{% endblock %}
-
 {% block page_title %}
     Exercices
 {% endblock %}
@@ -10,23 +8,24 @@
     Train yourself!
 {% endblock %}
 
-{% block main_content %}
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h4 class="panel-title">Reading part</h4>
-      </div>
+
+{% block main_content -%}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Document</h4>
+        </div>
         <div class="panel-body">
-            <h2>Incomplete sentences</h2>
-            <p>Fill the hole in the sentence with the correct word.</p>
-
-            <h2>Text completion</h2>
-            <p>Fill the holes in the documents with the correct words.</p>
-
-            <h2>Reading comprehension</h2>
-            <p>Find information in the documents to answer the questions.</p>
+            <p class="text-justify">{{ entity.document }}</p>
         </div>
     </div>
+    <!-- 
+        {% for hole in entity.wordDocHoles %}
+            {{ hole }},
+        {% endfor %}
+    -->
+
 {% endblock %}
+
 
 {% block right_menu %}
     <div class="panel panel-info">
@@ -40,9 +39,9 @@
                     The first exercise consists in filling the 
                     blanks in incomplete sentences.
                 </li>
-                <li>
-                    In the second exercise, we have to fill the 
-                    blanks in a whole text.
+                <li class="lead">
+                    <strong>In the second exercise, we have to fill the 
+                    blanks in a whole text.</strong>
                 </li>
                 <li>
                     And finally in the last exercise, we have multiple 
