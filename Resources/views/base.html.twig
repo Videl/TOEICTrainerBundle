@@ -20,18 +20,25 @@
 		</header>
 
 		<div class="container">
+		
+	    {% block jumbotron %}
+	        <div class="jumbotron">
+	            <h1>Welcome to TOEIC Trainer !</h1>
+	            <p>TOEIC Trainer is a website to help you improve your english by doing TOEIC-like exercises. Like the real TOEIC, our test his made of two distinct part: a <strong>Listening part</strong> and a <strong>Reading part</strong>.</p>
+	        </div>
+	    {% endblock %}
+		
+		{% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
 
-		{% block completebody %}
+		{% block body %}
 
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<section>
-						{% block body %}
-						<header>
-							<h1>Welcome!</h1>
-						</header>
-						<p>You are on the homepage. What would you like to do?</p>					
-						{% endblock %}
+							<header>
+								<h1>Welcome!</h1>
+							</header>
+							<p>You are on the homepage. What would you like to do?</p>
 					</section>
 				</div>
 			</div>
