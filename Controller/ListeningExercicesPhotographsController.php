@@ -10,8 +10,14 @@ class ListeningExercicesPhotographsController extends Controller
     public function showAction()
     {
 
-        $id = 1;
+        $idArray = array();
         $em = $this->getDoctrine()->getManager();
+
+        $exercises = $em->getRepository('TOEICTrainerBundle:ListeningPhotographs')->findAll();
+        foreach ($exercises as $e) {
+            array_push($idArray, $e->getId());         
+        }
+        $id = $idArray[rand(1, count($idArray)) - 1];
 
         $exercise = $em->getRepository('TOEICTrainerBundle:ListeningPhotographs')->find($id);
         $soundsArray = $em->getRepository('TOEICTrainerBundle:AudioFile')->findBy(array('type' => 'Photography'));
