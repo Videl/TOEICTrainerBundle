@@ -16,7 +16,7 @@
         </div>
         <div class="panel-body">
             <p class="text-center">
-                <img src="{{ asset('%path%')|replace({'%path%': exercise.picture.getWebPath()}) }}">
+                <img src="{{ asset('%path%')|replace({'%path%': exercise.picture.getWebPath()}) }}" class="img-rounded">
                 <div class="btn-group btn-group-justified">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default" onclick="playSound(0)" id="0">Play 1</button>
@@ -57,15 +57,23 @@
                 sounds.push(json[i]);
             }
         }
+        shuffle(sounds);
 
         function verifyAnswer() {
             if (document.getElementById("a" + goodAnswer).checked == true) {
-                alert("good");
+                //alert("good");
+                //TODO: Replace 1 by the id of the exercise
+                window.location.href="./train/{{ id }}/answer/good"
             }
             else {
-                alert("bad");
+                window.location.href="./train/{{ id }}/answer/wrong"
             }
         }
+
+        function shuffle(o) { 
+            for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
+        };
 
         function playSound(id) {
             var audioPlayer = document.getElementById('audioPlayer');
