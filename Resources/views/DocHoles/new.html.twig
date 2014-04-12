@@ -24,19 +24,20 @@
     </ul>
 
 	{{ form_end(form) }}
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('docholes') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('docholes') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript">
 
-function addAddressForm($collectionHolder, $newLinkLi) {
+function addHoleForm($collectionHolder, $newLinkLi) {
     // Get the data-prototype explained earlier
     var prototype = $collectionHolder.data('prototype');
 
@@ -55,7 +56,7 @@ function addAddressForm($collectionHolder, $newLinkLi) {
     $newLinkLi.before($newFormLi);
 }
 
-function addAddressFormDeleteLink($tagFormLi) {
+function addHoleFormDeleteLink($tagFormLi) {
     var $removeFormA = $('<a href="#">delete this tag</a>');
     $tagFormLi.append($removeFormA);
 
@@ -71,7 +72,7 @@ function addAddressFormDeleteLink($tagFormLi) {
 var $collectionHolder;
 
 // setup an "add a tag" link
-var $addTagLink = $('<a href="#" class="add_tag_link">Add an Address</a>');
+var $addTagLink = $('<a href="#" class="add_tag_link">Add a new hole</a>');
 var $newLinkLi = $('<li></li>').append($addTagLink);
 
 jQuery(document).ready(function() {
@@ -80,7 +81,7 @@ jQuery(document).ready(function() {
 
     // add a delete link to all of the existing tag form li elements
     $collectionHolder.find('li').each(function() {
-        addAddressFormDeleteLink($(this));
+        addHoleFormDeleteLink($(this));
     });
 
     // add the "add a tag" anchor and li to the wordDocHoles ul
@@ -95,7 +96,7 @@ jQuery(document).ready(function() {
         e.preventDefault();
 
         // add a new tag form (see next code block)
-        addAddressForm($collectionHolder, $newLinkLi);
+        addHoleForm($collectionHolder, $newLinkLi);
     });
 });
 </script>

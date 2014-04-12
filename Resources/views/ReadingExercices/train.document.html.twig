@@ -1,7 +1,7 @@
 {% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
 
 {% block page_title %}
-    Exercices
+    Exercises
 {% endblock %}
 
 {% block page_subtitle %}
@@ -15,7 +15,7 @@
             <h4 class="panel-title">Document</h4>
         </div>
         <div class="panel-body">
-            <p class="text-justify">{{ entity.document }}</p>
+            <p class="text-justify" id="goodluck"></p>
         </div>
     </div>
     <!-- 
@@ -23,6 +23,24 @@
             {{ hole }},
         {% endfor %}
     -->
+    {{ form_start(formentity) }}
+    {# render the task's only field: document #}
+    {# {{ form_row(formentity.document) }} #}
+
+    <h3>Document holes</h3>
+    <ul class="wordDocHoles" data-prototype="{{ form_widget(formentity.wordDocHoles.vars.prototype)|e }}" >
+        {# iterate over each existing address and render some fields: 
+        {% for wordHoles in formentity.wordDocHoles %}
+            <li>
+                <ul>
+                    <li>{{ form_row(wordHoles) }}</li>
+                </ul> <br />
+            </li>
+        {% endfor %}
+        #}
+    </ul>
+
+    {{ form_end(formentity) }}
 
 {% endblock %}
 
@@ -51,4 +69,43 @@
             </ul>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+originalText = {{ entity.document.document|json_encode|raw }};
+places = [
+            {% for hole in entity.wordDocHoles %}{{ hole }},{% endfor %}
+         ];
+         
+
+$(document).ready(function() {
+    alert(originalText);
+
+    for(var i = 0; i < places.length; i++)
+        alert(places[i]);
+
+    // I'm keeping the text given by PHP in a variable.
+    parsedText = originalText;
+    // explode the text into numbers, so I can suppress what I know I have to
+    // suppress.
+    exploded = parsedText.split(' ');
+
+    // contains the new text, ready to be displayed.
+    newText = "";
+
+    for(var i = 0; i < places.length; i++)
+    {
+        exploded[places[i]] = "<input type='text' value='' size=" + exploded[places[i]].length + " />";
+    }
+
+    for(var i = 0; i < exploded.length; i++)
+    {
+        newText = newText + " " + exploded[i];
+    }
+
+    text = $("#goodluck");
+    text.append(newText);
+});
+</script>
 {% endblock %}

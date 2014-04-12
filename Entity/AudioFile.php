@@ -36,7 +36,7 @@ class AudioFile
     /**
      * @Assert\File(
      * maxSize="6000000",
-     * mimeTypes = {"audio/mpeg"},
+     * mimeTypes = {"audio/mpeg", "audio/x-wav"},
      * mimeTypesMessage = "The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}"
      * )
      */
