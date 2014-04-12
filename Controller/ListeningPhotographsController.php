@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TN\TOEICTrainerBundle\Entity\ListeningPhotographs;
 use TN\TOEICTrainerBundle\Form\ListeningPhotographsType;
+use TN\TOEICTrainerBundle\Form\ListeningPhotographsExerciseType;
 
 /**
  * ListeningPhotographs controller.
@@ -244,4 +245,53 @@ class ListeningPhotographsController extends Controller
             ->getForm()
         ;
     }
+
+
+
+
+
+    /**
+    * Creates a form for an exercise with this entity.
+    *
+    * @param ListeningPhotographs $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createExerciseForm(ListeningPhotographs $entity)
+    {
+        $form = $this->createForm(new ListeningPhotographsExerciseType(), $entity, array(
+            'action' => $this->generateUrl('listeningphotographs_exercise'),
+            'method' => 'POST',
+        ));
+
+        $form->add("kokok","choice",array('property_path' => 'picture','expanded' => 'true', 'multiple' => 'false'));
+
+        return $form;
+    }
+    /**
+     * Creates a new exercise with this entity.
+     *
+     * @Route("/", name="listeningphotographs_exercise")
+     * @Method("POST")
+     * @Template("TOEICTrainerBundle:ListeningPhotographs:new.html.twig")
+     */
+    public function exerciseAction(Request $request)
+    {
+        $entity = new ListeningPhotographs();
+        $form = $this->createExerciseForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            return $this->redirect($this->generateUrl('listeningphotographs_show', array('id' => $entity->getId())));
+        }
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
+
+
 }

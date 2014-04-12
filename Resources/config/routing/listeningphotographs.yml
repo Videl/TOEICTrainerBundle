@@ -10,6 +10,10 @@ listeningphotographs_show:
     pattern:  /{id}/show
     defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:show" }
 
+listeningphotographs_exercise:
+    pattern:  /exercise
+    defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:exercise" }
+
 listeningphotographs_create:
     pattern:  /create
     defaults: { _controller: "TOEICTrainerBundle:ListeningPhotographs:create" }
