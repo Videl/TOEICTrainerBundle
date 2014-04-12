@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+
+\makeatletter
+\def\maketitle{
+%null
+\begin{minipage}{0.54\textwidth}
+\begin{flushleft} \large
+\LARGE \@author
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+%\includegraphics[width=6cm]{telecomnancy.jpg} %ou image.png, .jpeg etc. 
+\end{flushright}
+\end{minipage}
+  \vfill
+  \begin{center}\leavevmode
+    \normalfont
+    {\LARGE \@title\par}%
+    {\Large \@date\par} 
+    \vskip 1cm
+    %
+  \end{center}%
+  \vfill
+  \hfill
+  
+\begin{minipage}{0.54\textwidth}
+\begin{flushleft} \large
+% texte
+\includegraphics[width=6cm]{telecomnancy.jpg}
+
+
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\includegraphics[width=6cm]{univ-lorraine.jpg}
+\end{flushright}
+\end{minipage}
+  \cleardoublepage
+  }
+  
+\makeatother
+
+\title{English Project \\ \textbf{TOEIC Trainer}}
+\author{\textsc{Clément Schanen} \\ \textsc{Thibaut Smith}}
+\date{2014-2015}
+
+    %\renewcommand*\thesection{\arabic{section}}
+    
+    
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+
+\begin{document}
+\pagestyle{empty} % removes page numbering
+
+\maketitle % implicit pagebreak
+
+\pagestyle{plain}
+\setcounter{page}{2}
+
+\tableofcontents
+\section*{Introduction}
+As part of TELECOM Nancy's English course, we, \textsc{Clément Schanen} and
+\textsc{Thibaut Smith} tried our best to come up with an interesting and 
+useful product for the students of TELECOM Nancy.
+
+One of our objective for this project was to make a sustainable product that
+would allow for the community using it to refine it themselves and adding
+materials to study.
+
+\section{Website's Handbook}
+% 2-5 pages
+
+\section{Documentation technique}
+% 2-5 pages
+
+\section*{Conlusion}
+This project made us learn a great deal of things in web development, and we
+can be proud to say that we have now a better insight of the most famous tools
+and programming languages currently used in business. We 
+ 
+We tried analysing what were the requirements of such a project to come up with
+an interesting result that would not only help people studying for the TOEIC
+examination, but also a product that would not expire as fast as a project gone
+still. This is how we thought of giving everyone the possibility to submit new
+content and giving the ones that are more at ease with the english language.
+
+\end{document}
