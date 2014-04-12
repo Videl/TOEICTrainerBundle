@@ -28,7 +28,7 @@ class ReadingExercicesDocHoleController extends Controller
         return $this->render('TOEICTrainerBundle:ReadingExercices:train.document.html.twig', array(
             'entity'      => $entity,
             'formentity'  => $form->createView(),
-            ));
+        ));
     }
     
     /**
@@ -50,5 +50,25 @@ class ReadingExercicesDocHoleController extends Controller
         $form->add('submit', 'submit', array('label' => 'Check'));
 
         return $form;
+    }
+
+    public function checkAction(Request $request, $id)
+    {
+        $entity = new DocHoles();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($entity);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('docholes_show', array('id' => $entity->getId())));
+        }
+        
+        return $this->render('TOEICTrainerBundle:ReadingExercices:train.document.html.twig', array(
+            'entity'      => $entity,
+            'formentity'  => $form->createView(),
+        ));
     }
 }

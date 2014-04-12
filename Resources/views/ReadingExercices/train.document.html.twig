@@ -10,37 +10,34 @@
 
 
 {% block main_content -%}
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h4 class="panel-title">Document</h4>
+    <form action="{{ path('tn.toeic.exercices.main_page.reading.inc_documents.train.check', {'id': entity.id}) }}" method="post" {{ form_enctype(formentity) }}>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Document</h4>
+            </div>
+            <div class="panel-body">
+                <p class="text-justify" id="goodluck"></p>
+            </div>
         </div>
-        <div class="panel-body">
-            <p class="text-justify" id="goodluck"></p>
-        </div>
-    </div>
-    <!-- 
-        {% for hole in entity.wordDocHoles %}
-            {{ hole }},
-        {% endfor %}
-    -->
-    {{ form_start(formentity) }}
-    {# render the task's only field: document #}
-    {# {{ form_row(formentity.document) }} #}
-
-    <h3>Document holes</h3>
-    <ul class="wordDocHoles" data-prototype="{{ form_widget(formentity.wordDocHoles.vars.prototype)|e }}" >
-        {# iterate over each existing address and render some fields: 
-        {% for wordHoles in formentity.wordDocHoles %}
-            <li>
-                <ul>
-                    <li>{{ form_row(wordHoles) }}</li>
-                </ul> <br />
-            </li>
-        {% endfor %}
+        {# 
+            {% for hole in entity.wordDocHoles %}
+                {{ hole }},
+            {% endfor %}
         #}
-    </ul>
+        {# {{ form_row(formentity.document) }} #}
 
-    {{ form_end(formentity) }}
+        <ul class="wordDocHoles" data-prototype="{{ form_widget(formentity.wordDocHoles.vars.prototype)|e }}" >
+            {# iterate over each existing address and render some fields: 
+            {% for wordHoles in formentity.wordDocHoles %}
+                <li>
+                    <ul>
+                        <li>{{ form_row(wordHoles) }}</li>
+                    </ul> <br />
+                </li>
+            {% endfor %}
+            #}
+        </ul>
+    </form>
 
 {% endblock %}
 
@@ -77,13 +74,41 @@ originalText = {{ entity.document.document|json_encode|raw }};
 places = [
             {% for hole in entity.wordDocHoles %}{{ hole }},{% endfor %}
          ];
-         
+
+    // setup an "add a tag" link
+    var $addTagLink = $('<a href="#" class="add_tag_link">Add a new hole</a>');
+    var $newLinkLi = $('<li></li>').append($addTagLink);
+
+function getHoleForm($collectionHolder) {
+    // Get the data-prototype explained earlier
+    var prototype = $collectionHolder.data('prototype');
+
+    // get the new index
+    var index = $collectionHolder.data('index');
+
+    // increase the index with one for the next item
+    $collectionHolder.data('index', index + 1);
+
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    var newForm = prototype.replace(/__name__/g, index);
+    var newForm = newForm.replace(/form-control/g, "");
+
+    return newForm;
+}
+
+function addHoleForm($collectionHolder, $newLinkLi) {
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(getHoleForm($collectionHolder));
+    $newLinkLi.before($newFormLi);
+}
 
 $(document).ready(function() {
-    alert(originalText);
+    // alert(originalText);
 
-    for(var i = 0; i < places.length; i++)
-        alert(places[i]);
+    // for(var i = 0; i < places.length; i++)
+    //     alert(places[i]);
 
     // I'm keeping the text given by PHP in a variable.
     parsedText = originalText;
@@ -94,9 +119,13 @@ $(document).ready(function() {
     // contains the new text, ready to be displayed.
     newText = "";
 
+    // Get the ul that holds the collection of wordDocHoles
+    $collectionHolder = $('ul.wordDocHoles');
+
     for(var i = 0; i < places.length; i++)
     {
-        exploded[places[i]] = "<input type='text' value='' size=" + exploded[places[i]].length + " />";
+        //exploded[places[i]] = "<input type='text' value='' size=" + exploded[places[i]].length + " />";
+        exploded[places[i]] = getHoleForm($collectionHolder)
     }
 
     for(var i = 0; i < exploded.length; i++)
@@ -106,6 +135,22 @@ $(document).ready(function() {
 
     text = $("#goodluck");
     text.append(newText);
+
+
+    // add the "add a tag" anchor and li to the wordDocHoles ul
+    $collectionHolder.append($newLinkLi);
+
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+    $addTagLink.on('click', function(e) {
+        // prevent the link from creating a "#" on the URL
+        e.preventDefault();
+
+        // add a new tag form (see next code block)
+        addHoleForm($collectionHolder, $newLinkLi);
+    });
 });
 </script>
 {% endblock %}

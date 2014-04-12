@@ -47,8 +47,8 @@ tn.toeic.exercices.main_page.reading.inc_documents.train:
 
 tn.toeic.exercices.main_page.reading.inc_documents.train.check:
     pattern:  /reading/inc_documents/train/grading/{id}
-    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:show" }
-    methods: [POST]
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:check" }
+    requirements: { _method: post }
 
 # Reading: Questions/answers in a document
 tn.toeic.exercices.main_page.reading.qa_documents:
