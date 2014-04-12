@@ -76,7 +76,7 @@
             else {
                 var otherSound = sounds.pop();
                 if (otherSound) {
-                    audioPlayer.src = "/Symfony/web/bundles/toeictrainer/uploads/audioFiles/" + otherSound.path;
+                    audioPlayer.src = "{{ asset('bundles/toeictrainer/uploads/audioFiles/') }}" + otherSound.path;
                     audioPlayer.play();
                 }
             }
