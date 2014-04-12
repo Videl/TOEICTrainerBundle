@@ -6,6 +6,10 @@ tn.toeic.exercices.main_page.listening.photographs:
     pattern:  /listening/photographs
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:photographs" }
 
+tn.toeic.exercices.main_page.listening.photographs.train:
+    pattern:  /listening/photographs/train
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesPhotographs:show" }
+
 tn.toeic.exercices.main_page.listening.qa:
     pattern:  /listening/questions_and_answers
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:qa" }

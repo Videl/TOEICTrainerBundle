@@ -1,0 +1,114 @@
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
+
+{% block page_title %}
+    Exercises - Photographs
+{% endblock %}
+
+{% block page_subtitle %}
+    Train yourself!
+{% endblock %}
+
+
+{% block main_content -%}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Photographs Exercise</h4>
+        </div>
+        <div class="panel-body">
+            <p class="text-center">
+                <img src="{{ asset('%path%')|replace({'%path%': exercise.picture.getWebPath()}) }}">
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" onclick="playSound(0)" id="0">Play 1</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" onclick="playSound(1)" id="1">Play 2</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default" onclick="playSound(2)" id="2">Play 3</button>
+                    </div>
+                </div>
+                <br>
+                What is the correct answer ?<br>
+                <ul>
+                    <li><input type="radio" name="answer" value="0" id="a0"> Sound 1</li>
+                    <li><input type="radio" name="answer" value="1" id="a1"> Sound 2</li>
+                    <li><input type="radio" name="answer" value="2" id="a2"> Sound 3</li>
+                </ul>
+                <button type="button" class="btn btn-info" onclick="verifyAnswer()">Submit</button>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <audio id='audioPlayer'></audio>
+    <script>
+
+        // Random positioning for the goodAnswer
+        var goodAnswer = Math.floor ( Math.random() * 3  );
+        alert(goodAnswer);
+
+        sounds = new Array();
+
+        var json = {{ sounds|json_encode|raw }};
+        for (var i = 0; i < json.length; i++) {
+            if (json[i].name != "{{ exercise.correctDescription.name }}") {
+                sounds.push(json[i]);
+            }
+        }
+
+        function verifyAnswer() {
+            if (document.getElementById("a" + goodAnswer).checked == true) {
+                alert("good");
+            }
+            else {
+                alert("bad");
+            }
+        }
+
+        function playSound(id) {
+            var audioPlayer = document.getElementById('audioPlayer');
+            if (id == goodAnswer) {
+                audioPlayer.src = "{{ asset('%path%')|replace({'%path%': exercise.correctDescription.getWebPath()}) }}";
+                audioPlayer.play();
+            }
+            else {
+                var otherSound = sounds.pop();
+                if (otherSound) {
+                    audioPlayer.src = "/Symfony/web/bundles/toeictrainer/uploads/audioFiles/" + otherSound.path;
+                    audioPlayer.play();
+                }
+            }
+            var button = document.getElementById(id);
+            button.disabled = true;
+        }
+
+    </script>
+{% endblock %}
+
+
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Instructions</h4>
+        </div>
+        <div class="panel-body">
+            <p>The listening part of the test is composed of four different exercises.</p>
+            <ul>
+                <li class="lead">
+                    In the first exercise we have photography and description, the goal of this exercise is to find the description that best correspond to the photography.
+                </li>
+                <li>
+                    In the second exercise we hear question and multiple answer and we have to find the best answer for the question.
+                </li>
+                <li>
+                    For the third exercise we hear conversations and read questions, the goal is to select the correct written answer to the question.
+                </li>
+                <li>
+                    Finally, in the last exercise we hear talks and read question and the goal is to select the answer that correspond to the question.
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
