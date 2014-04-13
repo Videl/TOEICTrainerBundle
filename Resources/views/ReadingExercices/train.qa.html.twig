@@ -1,0 +1,70 @@
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
+
+{% block page_title %}
+    Exercises
+{% endblock %}
+
+{% block page_subtitle %}
+    Train yourself!
+{% endblock %}
+
+
+{% block main_content -%}
+    <form action="{{ path('tn.toeic.exercices.main_page.reading.qa_documents.train.check', {'id': entity.id}) }}" method="post" {{ form_enctype(formentity) }}>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Document</h4>
+            </div>
+            <div class="panel-body">
+                <p class="text-justify" id="goodluck">{{ entity.document.document }}</p>
+            </div>
+        </div>
+        
+        <h3>Q/A</h3>
+        <ul class="wordDocHoles" data-prototype="{{ form_widget(formentity.AQPairs.vars.prototype)|e }}" >
+            {# iterate over each existing address and render some fields: city #}
+            {% for aqpair in formentity.AQPairs %}
+                <li>
+                    <div class="panel panel-primary">
+                        <div class="panel-body">{{ form_row(aqpair) }}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    
+        {{ form_row(formentity.submit) }}
+
+        <div style="display: none">
+            {{ form_rest(formentity) }}
+        </div>
+    </form>
+
+{% endblock %}
+
+
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Instructions</h4>
+        </div>
+        <div class="panel-body">
+            <p>The reading part is composed of three different exercises. </p>
+            <ul>
+                <li>
+                    The first exercise consists in filling the 
+                    blanks in incomplete sentences.
+                </li>
+                <li class="lead">
+                    <strong>In the second exercise, we have to fill the 
+                    blanks in a whole text.</strong>
+                </li>
+                <li class="lead"><strong>
+                    And finally in the last exercise, we have one 
+                    document and questions, of which you have to answer 
+                    correctly using the information in the documents.</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

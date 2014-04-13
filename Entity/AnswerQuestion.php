@@ -39,6 +39,13 @@ class AnswerQuestion
     private $conversation;
 
     /**
+     * DocQuestions
+     * 
+     * @ORM\ManyToOne(targetEntity="DocQuestions", inversedBy="AQPairs")
+     */
+    private $docQuestions;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -92,5 +99,28 @@ class AnswerQuestion
         $this->correctAnswer = $correctAnswer;
 
         return $this;
+    }
+
+    /**
+     * Set docQuestions
+     *
+     * @param \TN\TOEICTrainerBundle\Entity\DocQuestions $docQuestions
+     * @return AnswerQuestion
+     */
+    public function setDocQuestions(\TN\TOEICTrainerBundle\Entity\DocQuestions $docQuestions = null)
+    {
+        $this->docQuestions = $docQuestions;
+
+        return $this;
+    }
+
+    /**
+     * Get docQuestions
+     *
+     * @return \TN\TOEICTrainerBundle\Entity\DocQuestions 
+     */
+    public function getDocQuestions()
+    {
+        return $this->docQuestions;
     }
 }

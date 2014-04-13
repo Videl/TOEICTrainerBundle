@@ -60,6 +60,7 @@ class ReadingExercicesDocHoleController extends Controller
         return $form;
     }
 
+
     public function checkAction(Request $request)
     {
         $entity = new DocHoles();
@@ -72,10 +73,19 @@ class ReadingExercicesDocHoleController extends Controller
             throw $this->createNotFoundException('Unable to find DocHoles entity.');
         }
 
-        $user_data = $form_data['wordDocHoles'];
-
         $logger = $this->get('logger');
-        $logger->error('VIDEL VIDEL VIDEL', array(1 => $form_data, 2 => $request->get('id')));
+        $user_data = $form_data['wordDocHoles'];
+        print_r($user_data);
+        $temp = array();
+        $i = 0;
+
+        for ($i = 1; $i < count($user_data); $i++) {
+            $logger->error("VIDEL", array($user_data[$i]));
+        }
+
+
+
+        $logger->error('VIDEL VIDEL VIDEL', array(1 => $form_data['wordDocHoles'], 2 => $temp, 3 => $request->get('id')));
 
         return $this->render('TOEICTrainerBundle:ReadingExercices:solution.document.html.twig', array(
             'correct_entity'      => $correct_entity,
@@ -122,12 +132,25 @@ class ReadingExercicesDocHoleController extends Controller
             throw $this->createNotFoundException('Unable to find DocHoles entity.');
         }
 
-        $user_data = $form_data['wordDocHoles'];
-
         $logger = $this->get('logger');
-        $logger->error('VIDEL VIDEL VIDEL', array(1 => $form_data, 2 => $request->get('id')));
+        $user_data = $form_data['wordDocHoles'];
+        $logger->error("VIDEL", array($user_data[0]));
+        function mysort($a, $b)
+        {
+            $na = (int) $a;
+            $nb = (int) $b;
 
-        return $this->render('TOEICTrainerBundle:ReadingExercices:solution.sentences.html.twig', array(
+            if($na > $nb)
+                return false;
+            else
+                return true;
+        }
+
+        $user_data = usort($user_data, "mysort");
+
+        //$logger->error('VIDEL VIDEL VIDEL', array(1 => $form_data, 2 => $user_data, 3 => $request->get('id')));
+
+        return $this->render('TOEICTrainerBundle:ReadingExercices:solution.document.html.twig', array(
             'correct_entity'      => $correct_entity,
             'user_response'       => $user_data
         ));

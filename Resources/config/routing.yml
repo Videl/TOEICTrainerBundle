@@ -29,3 +29,7 @@ TOEICTrainerBundle_picturefile:
 TOEICTrainerBundle_exercices:
         resource: "@TOEICTrainerBundle/Resources/config/routing/exercices.yml"
         prefix:   /exercises
+
+TOEICTrainerBundle_docquestions:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/docquestions.yml"
+        prefix:   /docquestions

@@ -81,23 +81,29 @@ places = [
          ];
 
 
-function getHoleForm($collectionHolder) {
+function getHoleForm(value) {
     // Get the data-prototype explained earlier
-    var prototype = $collectionHolder.data('prototype');
+    console.log(value)
+    var prototype = value.data('prototype');
+    console.log("CURRENT PROTO:" + prototype)
 
     // get the new index
-    var index = $collectionHolder.data('index');
+    var index = value.data('index');
+    console.log("CURRENT INDEX:" + index)
 
     // increase the index with one for the next item
-    $collectionHolder.data('index', index + 1);
+    value.data('index', index + 1);
+    alert(index)
 
     // Replace '__name__' in the prototype's HTML to
     // instead be a number based on how many items we have
     var newForm = prototype.replace(/__name__/g, index);
-    var newForm = newForm.replace(/form-control/g, "");
+    newForm = newForm.replace(/form-control/g, "");
 
     return newForm;
 }
+
+var index = 0;
 
 $(document).ready(function() {
     // alert(originalText);
@@ -115,12 +121,15 @@ $(document).ready(function() {
     newText = "";
 
     // Get the ul that holds the collection of wordDocHoles
-    $collectionHolder = $('ul.wordDocHoles');
+    //$collectionHolder = $('ul.wordDocHoles');
 
     for(var i = 0; i < places.length; i++)
     {
         //exploded[places[i]] = "<input type='text' value='' size=" + exploded[places[i]].length + " />";
-        exploded[places[i]] = getHoleForm($collectionHolder)
+        //exploded[places[i]] = getHoleForm($('ul.wordDocHoles'));
+        exploded[places[i]] = '<input type="number" id="tn_toeictrainerbundle_docholes_exercice_wordDocHoles' + index +
+        '" name="tn_toeictrainerbundle_docholes_exercice[wordDocHoles][' + index++ + ']" required="required" size=' +
+        exploded[places[i]].length + ' />';
     }
 
     for(var i = 0; i < exploded.length; i++)
@@ -134,7 +143,7 @@ $(document).ready(function() {
 
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+    //$('ul.wordDocHoles').data('index', $('ul.wordDocHoles').find(':input').length);
 });
 </script>
 {% endblock %}

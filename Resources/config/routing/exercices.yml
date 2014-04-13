@@ -36,11 +36,11 @@ tn.toeic.exercices.main_page.reading.inc_sentences:
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:inc_sentences" }
 
 tn.toeic.exercices.main_page.reading.inc_sentences.train:
-    pattern:  /reading/inc_documents/train/exercice
+    pattern:  /reading/inc_sentences/train/exercice
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:showSentences" }
 
 tn.toeic.exercices.main_page.reading.inc_sentences.train.check:
-    pattern:  /reading/inc_documents/train/grading
+    pattern:  /reading/inc_sentences/train/grading
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:checkSentences" }
     requirements: { _method: post }
 
@@ -63,3 +63,11 @@ tn.toeic.exercices.main_page.reading.qa_documents:
     pattern:  /reading/qa_documents
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:qa_documents" }
 
+tn.toeic.exercices.main_page.reading.qa_documents.train:
+    pattern:  /reading/qa/train/exercice
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesQA:show" }
+
+tn.toeic.exercices.main_page.reading.qa_documents.train.check:
+    pattern:  /reading/qa/train/grading
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesQA:check" }
+    requirements: { _method: post }
