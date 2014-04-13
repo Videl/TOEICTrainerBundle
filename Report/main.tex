@@ -106,12 +106,11 @@ GitHub\cite{github_tc}.
 
 \begin{figure}[here]
 \includegraphics[scale=0.35]{homepage.png}
-\caption{The TOEICTrainer home page, available at \url{http://fslhome.org/app.php/toeic/}.}
+\caption{The TOEICTrainer home page\cite{TOEICTrainer}, available at \url{http://toeic.fslhome.org/app.php/toeic/}.}
 \label{homepage}
 \end{figure}
 
-You can see on the Figure \ref{homepage} the website\footnote{The url is
-\url{http://toeic.fslhome.org/app.php/toeic/}}. It is currently available on
+You can see on the Figure \ref{homepage} the website. It is currently available on
 internet and should be working. The homepage describes to any user seeing the site what is the purposes of the site: \textit{providing a training platform for the ones who needs it}.
 
 Please note the presence of the \textbf{navigation bar} on the top, which is the preferred way to move around. With it, you can access the exercises and the submitting pages for new content.
@@ -151,6 +150,24 @@ two of them:
 
 The bold lines are the exercises you can find on the website.
 
+\begin{figure}[here]
+\includegraphics[scale=0.45]{rex1end.png}
+\caption{Fill the blanks in a document}
+\label{reading.ex1.end}
+\end{figure}
+
+
+
+\begin{figure}[here]
+\includegraphics[scale=0.4]{rex2end.png}
+\caption{Fill the blanks in a document}
+\label{reading.ex2.end}
+\end{figure}
+
+You can see on Figure \ref{reading.ex2.end} the display of the correction. You
+can add as many questions as you wish for a written document.
+
+
 \subsection{Create your own exercises}
 
 This website allow you to participate by writing documents or uploading new
@@ -161,6 +178,8 @@ contents.
 
 The pages to add contents are visible on the navigation bar
 under the "\textit{Participate!}" button.
+
+Because people will usually not bother submitting contributions to the site, we made it so \textbf{adding a little contribution can be used on as much exercises as possible}. In the end, contributors will have less forms to view, but maybe more data to input at once: for example, when submitting a sound recording, the audio transcript needs to be entered. It can then be used in written questions.
 
 \pagebreak
 
@@ -228,11 +247,16 @@ Pour cette partie, nous avons rajouté l'utilisation du Javascript qui permet
 d'avoir des évènements qui se passent \textbf{après} le chargement de la page.
 C'est en particulier ce qui permet un affichage agréable des exercices et de leur correction, et lorsqu'on créé de nouveaux exercices.
 
-La lecture de la musique se fait via HTML5, et nous avons appris à gérer l'enregistrement et l'utilisation du microphone de l'ordinateur avec l'outil \textbf{Recorder.js}\cite{recorderjs}.
+La lecture de la musique se fait via HTML5, et nous avons appris à gérer
+l'enregistrement et l'utilisation du microphone de l'ordinateur avec l'outil
+\textbf{Recorder.js}\cite{recorderjs}.
 
 \subsection{Problèmes rencontrés}
 Nous avons eu énormement de soucis liés aux technologies que nous ne
-connaissions pas. Par exemple, l'apprentissage de Symfony a nécessité la (re-)lecture d'un livre, de la documentation du site officiel, et d'un site d'échange d'informations\cite{so} sur le sujet de la programmation lorsque l'on avait besoin d'aide.
+connaissions pas. Par exemple, l'apprentissage de Symfony a nécessité
+la(re-)lecture d'un livre, de la documentation du site officiel, et d'un site
+d'échange d'informations\cite{so} sur le sujet de la programmation lorsque l'on
+avait besoin d'aide.
 
 Symfony dispose d'un channel dédié\cite{freenode} pour pouvoir discuter à des
 connaisseurs de Symfony, chose que l'on a pu essayer sans grands résultats.
@@ -244,7 +268,8 @@ Voici une liste des problèmes de développement qui nous est arrivé :
 	formulaires de Symfony a un prix, et c'est sa complexité. Heureusement,
 	la documentation\cite{docform} est très complète.
 	\item Personnalisation des formulaires. 
-	\item \textbf{Utilisation de la base de données et des relations entre entités stockés}.
+	\item \textbf{Utilisation de la base de données et des relations entre
+	entités stockés}.
 \end{itemize}
 
 Ceux en gras sont ceux que nous avons su résoudre de manière suffisamment complète.
