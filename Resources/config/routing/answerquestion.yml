@@ -1,0 +1,34 @@
+answerquestion:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:index" }
+
+answerquestion_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:new" }
+    
+answerquestion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:show" }
+
+answerquestion_exercise:
+    pattern:  /exercise
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:exercise" }
+
+answerquestion_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:create" }
+    requirements: { _method: post }
+
+answerquestion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:edit" }
+
+answerquestion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:update" }
+    requirements: { _method: post|put }
+
+answerquestion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:AnswerQuestion:delete" }
+    requirements: { _method: post|delete }

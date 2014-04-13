@@ -1,0 +1,36 @@
+{% extends 'TOEICTrainerBundle::base.html.twig' %}
+
+{% block body -%}
+    <h1>AnswerQuestion</h1>
+
+    <table class="record_properties table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.question.getWebPath()}) }}"></audio></td>
+            </tr>
+            <tr>
+                <th>Answer</th>
+                <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.correctAnswer.getWebPath()}) }}"></audio></td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('answerquestion') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('answerquestion_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

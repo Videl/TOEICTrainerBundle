@@ -22,6 +22,10 @@ tn.toeic.exercices.main_page.listening.qa.train:
     pattern:  /listening/questions_and_answers/train
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesQA:show" }
 
+tn.toeic.exercices.main_page.listening.qa.train.answer:
+    pattern:  /listening/questions_and_answers/train/{id}/answer/{result}
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesQA:showAnswer" }
+
 tn.toeic.exercices.main_page.listening.conversations:
     pattern:  /listening/conversations
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:conversations" }

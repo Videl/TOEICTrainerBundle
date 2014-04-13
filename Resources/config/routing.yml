@@ -14,6 +14,10 @@ TOEICTrainerBundle_listeningphotographs:
         resource: "@TOEICTrainerBundle/Resources/config/routing/listeningphotographs.yml"
         prefix:   /participate/listeningphotographs
 
+TOEICTrainerBundle_answerquestion:
+        resource: "@TOEICTrainerBundle/Resources/config/routing/answerquestion.yml"
+        prefix:   /participate/answerquestion
+
 TOEICTrainerBundle_audiofile:
         resource: "@TOEICTrainerBundle/Resources/config/routing/audiofile.yml"
         prefix:   /participate/audiofile

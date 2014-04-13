@@ -12,32 +12,34 @@ class ListeningExercicesQAController extends Controller
 
         $idArray = array();
         $em = $this->getDoctrine()->getManager();
-        //TODO: change repository and create entity
-        $exercises = $em->getRepository('TOEICTrainerBundle:ListeningPhotographs')->findAll();
+
+        $exercises = $em->getRepository('TOEICTrainerBundle:AnswerQuestion')->findAll();
         foreach ($exercises as $e) {
             array_push($idArray, $e->getId());         
         }
         $id = $idArray[rand(1, count($idArray)) - 1];
 
-        $exercise = $em->getRepository('TOEICTrainerBundle:ListeningPhotographs')->find($id);
+        $exercise = $em->getRepository('TOEICTrainerBundle:AnswerQuestion')->find($id);
+        $soundsArray = $em->getRepository('TOEICTrainerBundle:AudioFile')->findBy(array('type' => 'Photography'));
 
         if (!$exercise) {
             throw $this->createNotFoundException('Unable to find Questions/Answers exercise.');
         }
 
         return $this->render('TOEICTrainerBundle:ListeningExercices:train.qa.html.twig', array(
-            'exercise'      => $exercise, 
+            'exercise'      => $exercise,
+            'sounds'        => $soundsArray,
             'id'            => $id,    
             ));  
     }
 
-    /*public function showAnswerAction($id, $result)
+    public function showAnswerAction($id, $result)
     {
         $em = $this->getDoctrine()->getManager();
-        $exercise = $em->getRepository('TOEICTrainerBundle:ListeningPhotographs')->find($id);
-        return $this->render('TOEICTrainerBundle:ListeningExercices:train.photographs.answer.html.twig', array(
+        $exercise = $em->getRepository('TOEICTrainerBundle:AnswerQuestion')->find($id);
+        return $this->render('TOEICTrainerBundle:ListeningExercices:train.qa.answer.html.twig', array(
             'exercise'      => $exercise,
             'result'        => $result,
             ));
-    }*/
+    }
 }

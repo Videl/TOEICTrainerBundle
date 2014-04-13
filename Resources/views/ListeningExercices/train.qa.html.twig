@@ -18,7 +18,7 @@
             <p class="text-center">
                 <div class="btn-group btn-group-justified">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default" onclick="playSound(0)" id="0">Play Question</button>
+                        <button type="button" class="btn btn-default" onclick="playSound(-1)" id="-1">Play Question</button>
                     </div>
                 </div>
                 <div class="btn-group btn-group-justified">
@@ -48,7 +48,53 @@
 {% block javascripts %}
     <audio id='audioPlayer'></audio>
     <script>
+        // Random positioning for the goodAnswer
+        var goodAnswer = Math.floor ( Math.random() * 3  );
 
+        sounds = new Array();
+
+        var json = {{ sounds|json_encode|raw }};
+        for (var i = 0; i < json.length; i++) {
+            if (json[i].name != "{{ exercise.correctAnswer.name }}") {
+                sounds.push(json[i]);
+            }
+        }
+        shuffle(sounds);
+
+        function verifyAnswer() {
+            if (document.getElementById("a" + goodAnswer).checked == true) {
+                window.location.href="./train/{{ id }}/answer/good"
+            }
+            else {
+                window.location.href="./train/{{ id }}/answer/wrong"
+            }
+        }
+
+        function shuffle(o) { 
+            for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
+        };
+
+        function playSound(id) {
+            var audioPlayer = document.getElementById('audioPlayer');
+            if (id == goodAnswer) {
+                audioPlayer.src = "{{ asset('%path%')|replace({'%path%': exercise.correctAnswer.getWebPath()}) }}";
+                audioPlayer.play();
+            }
+            else if (id == -1) {
+                audioPlayer.src = "{{ asset('%path%')|replace({'%path%': exercise.question.getWebPath()}) }}";
+                audioPlayer.play();
+            }
+            else {
+                var otherSound = sounds.pop();
+                if (otherSound) {
+                    audioPlayer.src = "{{ asset('bundles/toeictrainer/uploads/audioFiles/') }}" + otherSound.path;
+                    audioPlayer.play();
+                }
+            }
+            var button = document.getElementById(id);
+            button.disabled = true;
+        }
     </script>
 {% endblock %}
 
