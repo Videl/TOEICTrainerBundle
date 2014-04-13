@@ -37,6 +37,11 @@
             {% endfor %}
             #}
         </ul>
+
+        {{ form_row(formentity.submit)}}
+        <div style="display: none">
+        {{ form_rest(formentity) }}
+        </div>
     </form>
 
 {% endblock %}
@@ -75,9 +80,6 @@ places = [
             {% for hole in entity.wordDocHoles %}{{ hole }},{% endfor %}
          ];
 
-    // setup an "add a tag" link
-    var $addTagLink = $('<a href="#" class="add_tag_link">Add a new hole</a>');
-    var $newLinkLi = $('<li></li>').append($addTagLink);
 
 function getHoleForm($collectionHolder) {
     // Get the data-prototype explained earlier
@@ -95,13 +97,6 @@ function getHoleForm($collectionHolder) {
     var newForm = newForm.replace(/form-control/g, "");
 
     return newForm;
-}
-
-function addHoleForm($collectionHolder, $newLinkLi) {
-
-    // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<li></li>').append(getHoleForm($collectionHolder));
-    $newLinkLi.before($newFormLi);
 }
 
 $(document).ready(function() {
@@ -137,20 +132,9 @@ $(document).ready(function() {
     text.append(newText);
 
 
-    // add the "add a tag" anchor and li to the wordDocHoles ul
-    $collectionHolder.append($newLinkLi);
-
     // count the current form inputs we have (e.g. 2), use that as the new
     // index when inserting a new item (e.g. 2)
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-    $addTagLink.on('click', function(e) {
-        // prevent the link from creating a "#" on the URL
-        e.preventDefault();
-
-        // add a new tag form (see next code block)
-        addHoleForm($collectionHolder, $newLinkLi);
-    });
 });
 </script>
 {% endblock %}

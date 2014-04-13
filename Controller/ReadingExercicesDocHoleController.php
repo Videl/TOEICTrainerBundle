@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TN\TOEICTrainerBundle\Entity\DocHoles;
 use TN\TOEICTrainerBundle\Form\DocHolesType;
 use TN\TOEICTrainerBundle\Form\DocHolesExerciceType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class ReadingExercicesDocHoleController extends Controller
 {
@@ -43,7 +44,7 @@ class ReadingExercicesDocHoleController extends Controller
     public function exerciseForm(DocHoles $entity, $data = null, array $options = array())
     {
         $form = $this->createForm(new DocHolesExerciceType(), $entity, array(
-            'action' => $this->generateUrl('tn.toeic.exercices.main_page.reading.inc_documents.train.check', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('tn.toeic.exercices.main_page.reading.inc_documents.train.check'),
             'method' => 'POST',
         ));
 
@@ -52,23 +53,26 @@ class ReadingExercicesDocHoleController extends Controller
         return $form;
     }
 
-    public function checkAction(Request $request, $id)
+    public function checkAction(Request $request)
     {
         $entity = new DocHoles();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $form_data = $request->get('tn_toeictrainerbundle_docholes_exercice', array());
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $correct_entity = $em->getRepository('TOEICTrainerBundle:DocHoles')->find($form_data['document']);
 
-            return $this->redirect($this->generateUrl('docholes_show', array('id' => $entity->getId())));
+        if (!$correct_entity) {
+            throw $this->createNotFoundException('Unable to find DocHoles entity.');
         }
-        
-        return $this->render('TOEICTrainerBundle:ReadingExercices:train.document.html.twig', array(
-            'entity'      => $entity,
-            'formentity'  => $form->createView(),
+
+        $user_data = $form_data['wordDocHoles'];
+
+        $logger = $this->get('logger');
+        $logger->error('VIDEL VIDEL VIDEL', array(1 => $form_data, 2 => $request->get('id')));
+
+        return $this->render('TOEICTrainerBundle:ReadingExercices:solution.document.html.twig', array(
+            'correct_entity'      => $correct_entity,
+            'user_response'       => $user_data
         ));
     }
 }
