@@ -15,7 +15,6 @@
 
 % Makes references hyperlinks in PDF output
 \usepackage[hidelinks]{hyperref}
-\usepackage{parskip}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \renewcommand{\thesection}{\Roman{section}}
@@ -128,7 +127,7 @@ is also divided in two exercises, so a user can do four different
 exercises: \textbf{Photographs}, \textbf{Questions/Answers on Audio} and
 on \textbf{Documents}, and \textbf{Incomplete documents}.
 
-Moreover, this website is collaborative, so every people can submit new contains (text, audio or picture) to build new exercises
+Moreover, the website is collaborative: anyone can submit new content (text, audio or picture) to build new exercises (Questions, Sound).
 
 \subsection{Listening exercises}
 
@@ -167,9 +166,39 @@ under the "\textit{Participate!}" button.
 
 \section{Documentation technique}
 % 2-5 pages
-\subsection{Mise en oeuvre}
 
-\subsection{Développement}
+Ce projet fut compliqué à mettre en oeuvre, pour plusieurs raisons. D'abord, le temps nous manquait, en partie à cause des plusieurs autres projets et examens en parallèle. Et surtout car nous avons souhaité utiliser des technologies \textbf{nouvelles}, \textbf{puissantes}, et \textbf{largement reconnues} dans le monde du travail qui nous étaient inconnues jusqu'à alors. Nous voulions développer nos connaissances et notre expérience.
+
+
+\subsection{Mise en oeuvre et développement}
+
+Nous pouvons découper l'architecture du site en deux parties bien précises :
+\begin{itemize}
+	\item La \textbf{partie dynamique}, ou \textbf{back-end}, qui s'occupe de prendre en compte les actions
+	 de l'utilisateur via les exercices qu'il peut crééer et utiliser pour
+	 s'entra\^iner.
+	 
+	 \item La \textbf{partie statique}, ou \textbf{front-end}, qui contrôle l'affichage et le rendu du design.
+\end{itemize}
+
+Nous avons choisi l'outil \textbf{Symfony}\cite{Symfony} qui est un
+\textbf{framework}\footnote{Un ensemble de codes sources pr\^et à \^etre utiliser.} qui implémente énormément de fonctionnalités pratiques
+lorsque l'on développe un site web. Par exemple, Symfony gère automatiquement
+l'affichage des formulaires, quelque chose qui est particulièrement g\^enant et
+qui prend du temps. Il gère aussi 
+
+\begin{itemize}
+	\item Gestion des utilisateurs simplifiées.
+	\item Gestion d'une architecture \textbf{Modèle-Vue-Controlleur} simple à
+	mettre en place.
+\end{itemize}
+
+
+\subsection{Gestion des exercices}
+La gestion des exercices prend en compte la création de nouveaux exercices ainsi que l'affichage et la correction des exercices lorsque l'on s'entraîne.
+
+
+
 \subsection{Problèmes rencontrés}
 
 
