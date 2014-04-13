@@ -1,81 +1,54 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocHoles edit</h1>
+    <h1>DocQuestions creation</h1>
 
-
-    {# 
-    {{ form(form) }}
-	#}
-
-	{{ form_start(edit_form) }}
+	{{ form_start(form) }}
     {# render the task's only field: document #}
-    {{ form_row(edit_form.document) }}
-
+    {{ form_row(form.document) }}
     <div class="panel panel-primary">
-        <div class="panel-heading">
-            <p>Selected document</p>
-        </div>
-        <div class="panel-body">
-            <p id="document_text"></p>
-        </div>
-    </div>
+	    <div class="panel-heading">
+	    	<p>Selected document</p>
+	    </div>
+    	<div class="panel-body">
+    		<p id="document_text"></p>
+    	</div>
+	</div>
 
-    <h3>Document holes</h3>
-    <ul class="wordDocHoles" data-prototype="{{ form_widget(edit_form.wordDocHoles.vars.prototype)|e }}" >
+    <h3>Q/A</h3>
+    <ul class="wordDocHoles" data-prototype="{{ form_widget(form.AQPairs.vars.prototype)|e }}" >
         {# iterate over each existing address and render some fields: city #}
-        {% for wordHoles in edit_form.wordDocHoles %}
+        {% for aqpair in form.AQPairs %}
             <li>
-                
-		        	{{ form_row(wordHoles) }}
+                <ul>
+		        	<li>{{ form_row(aqpair) }}</li>
+		        </ul> <br />
 		    </li>
         {% endfor %}
     </ul>
 
-    {{ form_row(edit_form.submit) }} <br />
+	{{ form_end(form) }}
 
-    <div style="display: none">
-	{{ form_end(edit_form) }}
-    </div>
-
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('docholes') }}">
-                Back to the list
-            </a>
-        </li>
-    </ul>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('docquestions') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript">
-function addToolTips(text)
-{
-    exploded = text.split(' ');
-    newText = "";
-
-    for(var i = 0; i < exploded.length; i++)
-    {
-        exploded[i] = "<span data-toggle='tooltip' title='word " + (i) + "' number='" + i + "'>" + exploded[i] + "</span> ";
-        newText = newText + exploded[i];
-    }
-
-    return newText;
-}
-
 function switchDoc(value)
 {
-    // get the value back
-    var e = document.getElementById("tn_toeictrainerbundle_docholes_document");
-    var strUser = e.options[e.selectedIndex].text;
+	// get the value back
+	var e = document.getElementById("tn_toeictrainerbundle_docquestions_document");
+	var strUser = e.options[e.selectedIndex].text;
 
-    strUser = addToolTips(strUser);
-
-    // input it in the div id document_text
-    $('#document_text').text("");
-    $('#document_text').append(strUser);
+	// input it in the div id document_text
+	$('#document_text').text(strUser);
 }
-
 
 function addHoleForm($collectionHolder, $newLinkLi) {
     // Get the data-prototype explained earlier
@@ -87,6 +60,10 @@ function addHoleForm($collectionHolder, $newLinkLi) {
     // Replace '__name__' in the prototype's HTML to
     // instead be a number based on how many items we have
     var newForm = prototype.replace(/__name__/g, index);
+    newForm = '<div class="panel panel-primary">' + 
+                '<div class="panel-body">' + newForm + 
+                '</div>' + 
+            '</div>';
 
     // increase the index with one for the next item
     $collectionHolder.data('index', index + 1);
@@ -112,7 +89,7 @@ function addHoleFormDeleteLink($tagFormLi) {
 var $collectionHolder;
 
 // setup an "add a tag" link
-var $addTagLink = $('<a href="#" class="add_tag_link">Add a new hole</a>');
+var $addTagLink = $('<a href="#" class="add_tag_link">Add a new question/answer for this document</a>.');
 var $newLinkLi = $('<li></li>').append($addTagLink);
 
 jQuery(document).ready(function() {

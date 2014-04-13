@@ -1,0 +1,30 @@
+docquestions:
+    pattern:  /
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:index" }
+
+docquestions_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:show" }
+
+docquestions_new:
+    pattern:  /new
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:new" }
+
+docquestions_create:
+    pattern:  /create
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:create" }
+    requirements: { _method: post }
+
+docquestions_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:edit" }
+
+docquestions_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:update" }
+    requirements: { _method: post|put }
+
+docquestions_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TOEICTrainerBundle:DocQuestions:delete" }
+    requirements: { _method: post|delete }

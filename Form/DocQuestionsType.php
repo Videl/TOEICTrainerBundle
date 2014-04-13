@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DocHolesType extends AbstractType
+class DocQuestionsType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -19,13 +19,12 @@ class DocHolesType extends AbstractType
                 'class' => 'TN\TOEICTrainerBundle\Entity\WrittenDocument',
                 'attr' => array('onchange' => 'switchDoc(this)'),
                 ))
-            ->add('wordDocHoles', 'collection', array(
-                'label' => 'Choose the holes that can be hidden:',
-                'type' => 'integer',
+            ->add('AQPairs', 'collection', array(
+                'type' => new AnswerQuestionType(),
+                'label' => "Choose the question/answers you want.",                
                 'allow_add' => true,
                 'by_reference' => false,
                 'allow_delete' => true,
-
                 ))
         ;
     }
@@ -36,7 +35,7 @@ class DocHolesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TN\TOEICTrainerBundle\Entity\DocHoles'
+            'data_class' => 'TN\TOEICTrainerBundle\Entity\DocQuestions'
         ));
     }
 
@@ -45,6 +44,6 @@ class DocHolesType extends AbstractType
      */
     public function getName()
     {
-        return 'tn_toeictrainerbundle_docholes';
+        return 'tn_toeictrainerbundle_docquestions';
     }
 }
