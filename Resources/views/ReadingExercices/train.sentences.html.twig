@@ -1,0 +1,140 @@
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
+
+{% block page_title %}
+    Exercises
+{% endblock %}
+
+{% block page_subtitle %}
+    Train yourself!
+{% endblock %}
+
+
+{% block main_content -%}
+    <form action="{{ path('tn.toeic.exercices.main_page.reading.inc_sentences.train.check', {'id': entity.id}) }}" method="post" {{ form_enctype(formentity) }}>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">Sentences</h4>
+            </div>
+            <div class="panel-body">
+                <p class="text-justify" id="goodluck"></p>
+            </div>
+        </div>
+        {# 
+            {% for hole in entity.wordDocHoles %}
+                {{ hole }},
+            {% endfor %}
+        #}
+        {# {{ form_row(formentity.document) }} #}
+
+        <ul class="wordDocHoles" data-prototype="{{ form_widget(formentity.wordDocHoles.vars.prototype)|e }}" >
+            {# iterate over each existing address and render some fields: 
+            {% for wordHoles in formentity.wordDocHoles %}
+                <li>
+                    <ul>
+                        <li>{{ form_row(wordHoles) }}</li>
+                    </ul> <br />
+                </li>
+            {% endfor %}
+            #}
+        </ul>
+
+        {{ form_row(formentity.submit)}}
+        <div style="display: none">
+        {{ form_rest(formentity) }}
+        </div>
+    </form>
+
+{% endblock %}
+
+
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Instructions</h4>
+        </div>
+        <div class="panel-body">
+            <p>The reading part is composed of three different exercises. </p>
+            <ul>
+                <li class="lead">
+                    <strong>The first exercise consists in filling the 
+                    blanks in incomplete sentences.</strong>
+                </li>
+                <li>
+                    In the second exercise, we have to fill the 
+                    blanks in a whole text.
+                </li>
+                <li>
+                    And finally in the last exercise, we have multiple 
+                    documents and questions, of which you have to answer 
+                    correctly using the information in the documents.
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+originalText = {{ entity.document.document|json_encode|raw }};
+places = [
+            {% for hole in entity.wordDocHoles %}{{ hole }},{% endfor %}
+         ];
+
+
+function getHoleForm($collectionHolder) {
+    // Get the data-prototype explained earlier
+    var prototype = $collectionHolder.data('prototype');
+
+    // get the new index
+    var index = $collectionHolder.data('index');
+
+    // increase the index with one for the next item
+    $collectionHolder.data('index', index + 1);
+
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    var newForm = prototype.replace(/__name__/g, index);
+    var newForm = newForm.replace(/form-control/g, "");
+
+    return newForm;
+}
+
+$(document).ready(function() {
+    // alert(originalText);
+
+    // for(var i = 0; i < places.length; i++)
+    //     alert(places[i]);
+
+    // I'm keeping the text given by PHP in a variable.
+    parsedText = originalText;
+    // explode the text into numbers, so I can suppress what I know I have to
+    // suppress.
+    exploded = parsedText.split(' ');
+
+    // contains the new text, ready to be displayed.
+    newText = "";
+
+    // Get the ul that holds the collection of wordDocHoles
+    $collectionHolder = $('ul.wordDocHoles');
+
+    for(var i = 0; i < places.length; i++)
+    {
+        //exploded[places[i]] = "<input type='text' value='' size=" + exploded[places[i]].length + " />";
+        exploded[places[i]] = getHoleForm($collectionHolder)
+    }
+
+    for(var i = 0; i < exploded.length; i++)
+    {
+        newText = newText + " " + exploded[i];
+    }
+
+    text = $("#goodluck");
+    text.append(newText);
+
+
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+});
+</script>
+{% endblock %}

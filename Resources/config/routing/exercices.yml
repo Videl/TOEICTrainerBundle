@@ -59,6 +59,15 @@ tn.toeic.exercices.main_page.reading.inc_sentences:
     pattern:  /reading/inc_sentences
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:inc_sentences" }
 
+tn.toeic.exercices.main_page.reading.inc_sentences.train:
+    pattern:  /reading/inc_documents/train/exercice
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:showSentences" }
+
+tn.toeic.exercices.main_page.reading.inc_sentences.train.check:
+    pattern:  /reading/inc_documents/train/grading
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesDocHole:checkSentences" }
+    requirements: { _method: post }
+
 # Reading: Word Holes in a document
 tn.toeic.exercices.main_page.reading.inc_documents:
     pattern:  /reading/inc_documents

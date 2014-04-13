@@ -94,6 +94,8 @@ $(document).ready(function() {
     for(var i = 0; i < places.length; i++)
     {
         //exploded[places[i]] = "<input type='text' value='" + user_input[i] + "' disabled size=" + exploded[places[i]].length + " />";
+        if(user_input[i] === undefined)
+            user_input[i] = "none";
         
         if (exploded[places[i]] === user_input[i])
             exploded[places[i]] = '<span class="label label-success">' + user_input[i] + '</span>';
