@@ -4,24 +4,24 @@ toeic_trainer_homepage:
 
 TOEICTrainerBundle_writtendocument:
         resource: "@TOEICTrainerBundle/Resources/config/routing/writtendocument.yml"
-        prefix:   /writtendocument
+        prefix:   /participate/writtendocument
 
 TOEICTrainerBundle_docholes:
         resource: "@TOEICTrainerBundle/Resources/config/routing/docholes.yml"
-        prefix:   /docholes
+        prefix:   /participate/docholes
 
 TOEICTrainerBundle_listeningphotographs:
         resource: "@TOEICTrainerBundle/Resources/config/routing/listeningphotographs.yml"
-        prefix:   /listeningphotographs
+        prefix:   /participate/listeningphotographs
 
 TOEICTrainerBundle_audiofile:
         resource: "@TOEICTrainerBundle/Resources/config/routing/audiofile.yml"
-        prefix:   /audiofile
+        prefix:   /participate/audiofile
 
 TOEICTrainerBundle_picturefile:
         resource: "@TOEICTrainerBundle/Resources/config/routing/picturefile.yml"
-        prefix:   /picturefile
+        prefix:   /participate/picturefile
 
 TOEICTrainerBundle_exercices:
         resource: "@TOEICTrainerBundle/Resources/config/routing/exercices.yml"
-        prefix:   /exercices
+        prefix:   /exercises

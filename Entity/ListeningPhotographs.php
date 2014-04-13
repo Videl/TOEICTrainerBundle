@@ -94,5 +94,4 @@ class ListeningPhotographs
         return $this;
     }
 
-
 }
