@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
@@ -16,8 +16,10 @@
 % Makes references hyperlinks in PDF output
 \usepackage[hidelinks]{hyperref}
 \usepackage{parskip}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]
-{geometry}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
 
 \makeatletter
 \def\maketitle{
@@ -91,16 +93,30 @@ One of our objective for this project was to make a sustainable product that
 would allow for the community using it to refine it themselves and adding
 materials to study.
 
+\pagebreak
 \section{Website's Handbook}
 % 2-5 pages
+% Présentation de l'outil, mode d'emploi
 
-The product that we came up with is a website\cite{TOEICTrainer}. In order to complete the pre-requisits that we wanted, we thought a website could reach everyone at school, and beyond.
+The product that we came up with is a website\cite{TOEICTrainer}. In order to complete the pre-requisits that we wanted, we thought a website could reach everyone at school, and beyond. You can find the sources on GitHub\cite{github_tc}.
 
 \subsection{What you can do with this website}
 \subsection{Listening exercices}
 \subsection{Reading exercices}
-The exercices
-\subsection{Documentation technique}
+The TOEIC has three kinds of exercices in the reading session. We implemented
+two of them:
+
+\begin{itemize}
+	\item Fill the blanks in an incomplete sentences
+	\item \textbf{Fill the blanks in a document}
+	\item \textbf{Use documents to answer questions about them}
+\end{itemize}
+
+The bold lines are the exercices you can find on the website.
+
+\pagebreak
+
+\section{Documentation technique}
 % 2-5 pages
 \subsection{Mise en oeuvre}
 
