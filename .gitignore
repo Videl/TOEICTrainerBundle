@@ -4,3 +4,6 @@
 *.pdf
 *.gz
 *.toc
+*.bbl
+*.blg
+*.out
