@@ -16,14 +16,15 @@
         <h4 class="panel-title">Reading part</h4>
       </div>
         <div class="panel-body">
+        {#
             <h2><a href="{{ path('tn.toeic.exercices.main_page.reading.inc_sentences') }}">Incomplete sentences</a></h2>
             <p>Fill the holes in the sentence with the correct word.</p>
-
+        #}
             <h2><a href="{{ path('tn.toeic.exercices.main_page.reading.inc_documents') }}">Text completion</a></h2>
-            <p>Fill the holes in the documents with the correct words.</p>
+            <p>Fill the holes in the document with the correct words.</p>
 
             <h2><a href="{{ path('tn.toeic.exercices.main_page.reading.qa_documents') }}">Reading comprehension</a></h2>
-            <p>Find information in the documents to answer the questions.</p>
+            <p>Find information in the document to answer the questions.</p>
         </div>
     </div>
 {% endblock %}
@@ -34,20 +35,16 @@
             <h4 class="panel-title">Instructions</h4>
         </div>
         <div class="panel-body">
-            <p>The reading part is composed of three different exercises. </p>
+            <p>The reading part is composed of two different exercises. </p>
             <ul>
                 <li>
-                    The first exercise consists in filling the 
-                    blanks in incomplete sentences.
-                </li>
-                <li>
-                    In the second exercise, we have to fill the 
+                    In the first exercise, we have to fill the 
                     blanks in a whole text.
                 </li>
                 <li>
-                    And finally in the last exercise, we have multiple 
-                    documents and questions, of which you have to answer 
-                    correctly using the information in the documents.
+                    And in the second exercise, we have one 
+                    document and questions, of which you have to choose 
+                    the right answer using the information in the documents.
                 </li>
             </ul>
         </div>
