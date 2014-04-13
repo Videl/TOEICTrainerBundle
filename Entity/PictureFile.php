@@ -190,6 +190,7 @@ class PictureFile
 
     public function __toString()
     {
-        return $this->name;
+        //return $this->getWebPath();
+        return $this->getName();
     }
 }

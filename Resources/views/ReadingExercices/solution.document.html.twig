@@ -1,0 +1,114 @@
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
+
+{% block page_title %}
+    Exercises
+{% endblock %}
+
+{% block page_subtitle %}
+    Review the correct answer
+{% endblock %}
+
+
+{% block main_content -%}
+    <h3>Side-by-side view</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Correct document</h4>
+                </div>
+                <div class="panel-body">
+                    <p class="text-justify">{{ correct_entity.document }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Your answer</h4>
+                </div>
+                <div class="panel-body">
+                    <p class="text-justify" id="goodluck"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Instructions</h4>
+        </div>
+        <div class="panel-body">
+            <p>The reading part is composed of three different exercises. </p>
+            <ul>
+                <li>
+                    The first exercise consists in filling the 
+                    blanks in incomplete sentences.
+                </li>
+                <li class="lead">
+                    <strong>In the second exercise, we have to fill the 
+                    blanks in a whole text.</strong>
+                </li>
+                <li>
+                    And finally in the last exercise, we have multiple 
+                    documents and questions, of which you have to answer 
+                    correctly using the information in the documents.
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+originalText = {{ correct_entity.document.document|json_encode|raw }};
+places = [
+            {% for hole in correct_entity.wordDocHoles %}{{ hole }},{% endfor %}
+         ];
+
+user_input = [
+                {% for hole in user_response %}"{{ hole }}",{% endfor %}
+             ]; 
+
+
+$(document).ready(function() {
+    // alert(originalText);
+
+    // for(var i = 0; i < places.length; i++)
+    //     alert(places[i]);
+
+    // I'm keeping the text given by PHP in a variable.
+    parsedText = originalText;
+    // explode the text into numbers, so I can suppress what I know I have to
+    // suppress.
+    exploded = parsedText.split(' ');
+
+    // contains the new text, ready to be displayed.
+    newText = "";
+
+    for(var i = 0; i < places.length; i++)
+    {
+        //exploded[places[i]] = "<input type='text' value='" + user_input[i] + "' disabled size=" + exploded[places[i]].length + " />";
+        
+        if (exploded[places[i]] === user_input[i])
+            exploded[places[i]] = '<span class="label label-success">' + user_input[i] + '</span>';
+        else
+            exploded[places[i]] = '<span class="label label-danger">' + user_input[i] + '</span>';
+    }
+
+    for(var i = 0; i < exploded.length; i++)
+    {
+        newText = newText + " " + exploded[i];
+    }
+
+    text = $("#goodluck");
+    text.append(newText);
+
+});
+</script>
+{% endblock %}

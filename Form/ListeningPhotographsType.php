@@ -15,8 +15,12 @@ class ListeningPhotographsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('picture')
-            ->add('correctDescription')
+            ->add('picture', 'entity', array(
+                'class' => 'TN\TOEICTrainerBundle\Entity\PictureFile',
+                'label' => 'Choose the picture you want the student to recognise.'))
+            ->add('correctDescription', 'entity', array(
+                'class' => 'TN\TOEICTrainerBundle\Entity\AudioFile',
+                'label' => 'Choose the corresponding sound description'))
         ;
     }
     

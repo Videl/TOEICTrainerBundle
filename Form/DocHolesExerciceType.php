@@ -15,11 +15,16 @@ class DocHolesExerciceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('document', 'entity', array(
+                'class' => 'TN\TOEICTrainerBundle\Entity\WrittenDocument',
+                'required' => false,
+                )) // <- this bit will be hidden, I use this to get the data
             ->add('wordDocHoles', 'collection', array(
                 'type' => 'integer',
                 'allow_add' => true,
                 'by_reference' => false,
                 'allow_delete' => true,
+                'disabled' => true,
                 ))
         ;
     }
