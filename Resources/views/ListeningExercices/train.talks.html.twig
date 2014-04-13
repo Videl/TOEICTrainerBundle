@@ -1,0 +1,54 @@
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
+
+{% block page_title %}
+    Exercises - Talks
+{% endblock %}
+
+{% block page_subtitle %}
+    Train yourself!
+{% endblock %}
+
+
+{% block main_content -%}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">Talks Exercise</h4>
+        </div>
+        <div class="panel-body">
+            <p class="text-center">
+                <br>
+                What is the correct answer ?<br>
+                <button type="button" class="btn btn-info" onclick="verifyAnswer()">Submit</button>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Instructions</h4>
+        </div>
+        <div class="panel-body">
+            <p>The listening part of the test is composed of four different exercises.</p>
+            <ul>
+                <li>
+                    In the first exercise we have photography and description, the goal of this exercise is to find the description that best correspond to the photography.
+                </li>
+                <li>
+                    In the second exercise we hear question and multiple answer and we have to find the best answer for the question.
+                </li>
+                <li>
+                    For the third exercise we hear conversations and read questions, the goal is to select the correct written answer to the question.
+                </li>
+                <li  class="lead">
+                    Finally, in the last exercise we hear talks and read question and the goal is to select the answer that correspond to the question.
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
