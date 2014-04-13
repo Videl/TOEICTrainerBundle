@@ -87,3 +87,11 @@ tn.toeic.exercices.main_page.reading.qa_documents:
     pattern:  /reading/qa_documents
     defaults: { _controller: "TOEICTrainerBundle:ReadingExercices:qa_documents" }
 
+tn.toeic.exercices.main_page.reading.qa_documents.train:
+    pattern:  /reading/qa/train/exercice
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesQA:show" }
+
+tn.toeic.exercices.main_page.reading.qa_documents.train.check:
+    pattern:  /reading/qa/train/grading
+    defaults: { _controller: "TOEICTrainerBundle:ReadingExercicesQA:check" }
+    requirements: { _method: post }

@@ -1,0 +1,95 @@
+{% extends 'TOEICTrainerBundle:Default:template.mc.sidebar.html.twig' %}
+
+{% block page_title %}
+    Exercises
+{% endblock %}
+
+{% block page_subtitle %}
+    Correct yourself!
+{% endblock %}
+
+
+{% block main_content -%}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Document</h4>
+                </div>
+                <div class="panel-body">
+                    <p class="text-justify">{{ correct_entity.document }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Correct combination</h4>
+                </div>
+                <div class="panel-body">
+                    {% for pair in correct_entity.aqpairs %}
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">{{ pair.question.audioTranscript }}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p class="text-justify">{{ pair.correctAnswer.audioTranscript }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-{% if perfect == true %}success{% else %}danger{% endif %}">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Your answer</h4>
+                </div>
+                <div class="panel-body">
+                    {% for pair in user_entity.aqpairs %}
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">{{ pair.question.audioTranscript }}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p class="text-justify">{{ pair.correctAnswer.audioTranscript }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block right_menu %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">Instructions</h4>
+        </div>
+        <div class="panel-body">
+            <p>The reading part is composed of three different exercises. </p>
+            <ul>
+                <li>
+                    The first exercise consists in filling the 
+                    blanks in incomplete sentences.
+                </li>
+                <li class="lead">
+                    <strong>In the second exercise, we have to fill the 
+                    blanks in a whole text.</strong>
+                </li>
+                <li class="lead"><strong>
+                    And finally in the last exercise, we have one 
+                    document and questions, of which you have to answer 
+                    correctly using the information in the documents.</strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

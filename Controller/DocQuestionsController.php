@@ -41,6 +41,10 @@ class DocQuestionsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            foreach ($entity->getAQPairs() as $key => $pair) {
+                $pair->setDocQuestions($entity);
+            }
+
             $em->persist($entity);
             $em->flush();
 
@@ -169,6 +173,9 @@ class DocQuestionsController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            foreach ($entity->getAQPairs() as $key => $pair) {
+                $pair->setDocQuestions($entity);
+            }
             $em->flush();
 
             return $this->redirect($this->generateUrl('docquestions_edit', array('id' => $id)));

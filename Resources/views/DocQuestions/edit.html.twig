@@ -20,10 +20,11 @@
         {# iterate over each existing address and render some fields: city #}
         {% for aqpair in edit_form.AQPairs %}
             <li>
-                <ul>
-		        	<li>{{ form_row(aqpair) }}</li>
-		        </ul> <br />
-		    </li>
+                <div class="panel panel-primary">
+                    <div class="panel-body">{{ form_row(aqpair) }}
+                    </div>
+                </div>
+            </li>
         {% endfor %}
     </ul>
 
@@ -35,6 +36,7 @@
             Back to the list
         </a>
     </li>
+    <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
 
