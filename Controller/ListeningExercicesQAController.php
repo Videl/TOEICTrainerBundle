@@ -20,7 +20,7 @@ class ListeningExercicesQAController extends Controller
         $id = $idArray[rand(1, count($idArray)) - 1];
 
         $exercise = $em->getRepository('TOEICTrainerBundle:AnswerQuestion')->find($id);
-        $soundsArray = $em->getRepository('TOEICTrainerBundle:AudioFile')->findBy(array('type' => 'Photography'));
+        $soundsArray = $em->getRepository('TOEICTrainerBundle:AudioFile')->findBy(array('type' => 'Answer'));
 
         if (!$exercise) {
             throw $this->createNotFoundException('Unable to find Questions/Answers exercise.');

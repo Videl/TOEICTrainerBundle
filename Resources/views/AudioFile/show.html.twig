@@ -19,7 +19,21 @@
             </tr>
             <tr>
                 <th>Type</th>
-                <td>{{ entity.type }}</td>
+                <td>
+                    {% if entity.type == "Photography" %}
+                        <span class="label label-success">{{ entity.type }}</span>
+                    {% elseif entity.type == "Answer" %}
+                        <span class="label label-primary">{{ entity.type }}</span>
+                    {% elseif entity.type == "Conversation" %}
+                        <span class="label label-warning">{{ entity.type }}</span>
+                    {% elseif entity.type == "Talk" %}
+                        <span class="label label-danger">{{ entity.type }}</span>
+                    {% elseif entity.type == "Question" %}
+                        <span class="label label-info">{{ entity.type }}</span>
+                    {% else %}
+                        <span class="label label-default">{{ entity.type }}</span>
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <th>File</th>
