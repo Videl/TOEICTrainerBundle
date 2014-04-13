@@ -51,11 +51,11 @@
 							</a>
 						</li>		
 						<li class="divider"></li>		
-						<li>
+						{#<li>
 							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_sentences') }}"><span class="glyphicon glyphicon-edit"></span>  
 								Fill incomplete sentences
 							</a>
-						</li>				
+						</li>#}				
 						<li>
 							<a href="{{ path('tn.toeic.exercices.main_page.reading.inc_documents') }}"><span class="glyphicon glyphicon-edit"></span>  
 								Fill incomplete documents</a>
@@ -86,11 +86,17 @@
 								Create a photograph exercise!
 							</a>
 						</li>
+						<li>
+							<a href="{{path('answerquestion_new') }}"><span class="glyphicon glyphicon-music"></span>
+								Create a question/answer exercise!
+							</a>
+						</li>
 						<li><a href="{{ path('picturefile_new') }}">Add pictures</a></li>
+						<li><a href="{{ path('audiofile_new') }}">Add sounds</a></li>
 						<li><a href="{{ path('audiofile_newSound') }}">Create a new recording for an exercise</a></li>
-						<li><a href="#">Add questions for a recording</a></li>
+						{#<li><a href="#">Add questions for a recording</a></li>
 						<li><a href="#">Set up a conversation with a recording</a></li>
-						<li><a href="#">Set up a talk with a recording</a></li>
+						<li><a href="#">Set up a talk with a recording</a></li>#}
 					</ul>
 				</li>
 			</ul>

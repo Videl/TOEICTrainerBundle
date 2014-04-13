@@ -36,7 +36,6 @@ class AnswerQuestion
      * @ORM\OneToOne(targetEntity="AudioFile")
      */
     private $correctAnswer;
-    private $conversation;
 
     /**
      * DocQuestions
