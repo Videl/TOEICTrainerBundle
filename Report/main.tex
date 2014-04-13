@@ -1,11 +1,23 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multicol}
+%\usepackage{tabulary}
+\usepackage{listings}
+\usepackage{color}
 \usepackage{graphicx}
+%\usepackage{tcolorbox} % color boxes for definition
+\usepackage{nameref} % reference to chapters with \nameref{}, need a \label{}
+
+% Makes references hyperlinks in PDF output
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]
+{geometry}
 
 \makeatletter
 \def\maketitle{
@@ -82,12 +94,12 @@ materials to study.
 \section{Website's Handbook}
 % 2-5 pages
 
-The product that we came up with is a website. In order to complete the pre-requisits that we wanted, we thought a website could reach everyone at school, and beyond.
+The product that we came up with is a website\cite{TOEICTrainer}. In order to complete the pre-requisits that we wanted, we thought a website could reach everyone at school, and beyond.
 
- \subsection{What you can do with this website}
- \subsection{Listening exercices}
- \subsection{Reading exercices}
-
+\subsection{What you can do with this website}
+\subsection{Listening exercices}
+\subsection{Reading exercices}
+The exercices
 \subsection{Documentation technique}
 % 2-5 pages
 \subsection{Mise en oeuvre}
@@ -106,5 +118,10 @@ an interesting result that would not only help people studying for the TOEIC
 examination, but also a product that would not expire as fast as a project gone
 still. This is how we thought of giving everyone the possibility to submit new
 content and giving the ones that are more at ease with the english language.
+
+
+\bibliographystyle{plain} % biblio style
+\bibliography{biblio} % to load biblio.bib
+
 
 \end{document}
