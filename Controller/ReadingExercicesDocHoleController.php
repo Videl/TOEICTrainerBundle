@@ -14,9 +14,16 @@ class ReadingExercicesDocHoleController extends Controller
 {
     public function showAction()
     {
-        $id = 1;
 
         $em = $this->getDoctrine()->getManager();
+
+        $exercises = $em->getRepository('TOEICTrainerBundle:DocHoles')->findAll();
+
+        $idArray = array();
+        foreach ($exercises as $e) {
+            array_push($idArray, $e->getId());
+        }
+        $id = $idArray[rand(1, count($idArray)) - 1];
 
         $entity = $em->getRepository('TOEICTrainerBundle:DocHoles')->find($id);
 
@@ -59,7 +66,7 @@ class ReadingExercicesDocHoleController extends Controller
         $form_data = $request->get('tn_toeictrainerbundle_docholes_exercice', array());
 
         $em = $this->getDoctrine()->getManager();
-        $correct_entity = $em->getRepository('TOEICTrainerBundle:DocHoles')->find($form_data['document']);
+        $correct_entity = $em->getRepository('TOEICTrainerBundle:DocHoles')->find($request->get('id'));
 
         if (!$correct_entity) {
             throw $this->createNotFoundException('Unable to find DocHoles entity.');

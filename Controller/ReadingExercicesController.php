@@ -13,7 +13,7 @@ class ReadingExercicesController extends Controller
 
     public function inc_sentencesAction()
     {
-        return $this->render('TOEICTrainerBundle:ReadingExercices:index.html.twig');
+        return $this->render('TOEICTrainerBundle:ReadingExercices:index.sentences.html.twig');
     }
 
     public function inc_documentsAction()
