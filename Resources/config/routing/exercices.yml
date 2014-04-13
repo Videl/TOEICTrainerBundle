@@ -10,7 +10,6 @@ tn.toeic.exercices.main_page.listening.photographs.train:
     pattern:  /listening/photographs/train
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesPhotographs:show" }
 
-# Ici
 tn.toeic.exercices.main_page.listening.photographs.train.answer:
     pattern:  /listening/photographs/train/{id}/answer/{result}
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesPhotographs:showAnswer" }
@@ -18,6 +17,10 @@ tn.toeic.exercices.main_page.listening.photographs.train.answer:
 tn.toeic.exercices.main_page.listening.qa:
     pattern:  /listening/questions_and_answers
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:qa" }
+
+tn.toeic.exercices.main_page.listening.qa.train:
+    pattern:  /listening/questions_and_answers/train
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesQA:show" }
 
 tn.toeic.exercices.main_page.listening.conversations:
     pattern:  /listening/conversations

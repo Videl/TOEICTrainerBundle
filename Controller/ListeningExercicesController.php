@@ -18,8 +18,7 @@ class ListeningExercicesController extends Controller
 
     public function qaAction()
     {
-        return $this->render('TOEICTrainerBundle:ListeningExercices:index.html.twig');
-        //return $this->render('TOEICTrainerBundle:ListeningExercices:index.qa.html.twig');
+        return $this->render('TOEICTrainerBundle:ListeningExercices:index.qa.html.twig');
     }
 
     public function conversationsAction()
