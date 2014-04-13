@@ -167,7 +167,13 @@ under the "\textit{Participate!}" button.
 \section{Documentation technique}
 % 2-5 pages
 
-Ce projet fut compliqué à mettre en oeuvre, pour plusieurs raisons. D'abord, le temps nous manquait, en partie à cause des plusieurs autres projets et examens en parallèle. Et surtout car nous avons souhaité utiliser des technologies \textbf{nouvelles}, \textbf{puissantes}, et \textbf{largement reconnues} dans le monde du travail qui nous étaient inconnues jusqu'à alors. Nous voulions développer nos connaissances et notre expérience.
+Ce projet fut compliqué à mettre en oeuvre, pour plusieurs raisons. D'abord, le temps nous manquait, en partie à cause des plusieurs autres projets et examens en parallèle. Et surtout car nous avons souhaité utiliser des technologies \textbf{nouvelles}, \textbf{puissantes}, et \textbf{largement reconnues} dans le monde du travail qui nous étaient inconnues jusqu'à alors. Nous voulions développer nos connaissances et notre expérience. 
+
+Nous avons aussi pu développer nos connaissances dans des langages de
+programmation tels que PHP\cite{php}, Javascript\cite{javascript} et
+CSS\cite{css}. Pour apprendre le Javascript, on est allé sur Codecademy\cite{codecademy}.
+
+
 
 
 \subsection{Mise en oeuvre et développement}
@@ -185,22 +191,63 @@ Nous avons choisi l'outil \textbf{Symfony}\cite{Symfony} qui est un
 \textbf{framework}\footnote{Un ensemble de codes sources pr\^et à \^etre utiliser.} qui implémente énormément de fonctionnalités pratiques
 lorsque l'on développe un site web. Par exemple, Symfony gère automatiquement
 l'affichage des formulaires, quelque chose qui est particulièrement g\^enant et
-qui prend du temps. Il gère aussi 
+qui prend du temps. Voici une liste non exhaustives de ce qu'il peut faire :
 
 \begin{itemize}
 	\item Gestion des utilisateurs simplifiées.
 	\item Gestion d'une architecture \textbf{Modèle-Vue-Controlleur} simple à
 	mettre en place.
+	\item Gestion de la base de données simple à mettre en place.
 \end{itemize}
 
+Mais le principale avantage de Symfony est avant tout la documentation et la
+durabilité du code : un code fonctionnant sur Symfony peut être écrit de
+manière standard \textbf{que tout développeur Symfony} peut comprendre. Cela
+signifie que ce code peut être fourni à quiconque connaissant Symfony, et
+comprendra parfaitement l'architecture du code et la manière dont sont
+articulés les différents élements du projet.
 
-\subsection{Gestion des exercices}
-La gestion des exercices prend en compte la création de nouveaux exercices ainsi que l'affichage et la correction des exercices lorsque l'on s'entraîne.
+Pour \textbf{TOEIC Trainer}, les principaux élements sont :
 
+\begin{itemize}
+	\item Le fait de pouvoir s'entraîner sur des exercices.
+	\item Le fait de pouvoir créer des exercices.
+\end{itemize}
 
+Pour pouvoir créer un design plus rapidement, nous avons intégré le design Bootstrap\cite{Bootstrap} avec l'outil BraincraftedBootstrap\cite{BraincraftedBootstrapBundle} qui permet de relier Bootstrap et Symfony plus facilement.
+
+\subsubsection{Gestion des exercices}
+
+La gestion des exercices prend en compte la création de nouveaux exercices
+ainsi que l'affichage et la correction des exercices lorsque l'on s'entraîne.
+
+L'aspect affichage et la correction des exercices est complètement différent de
+la création d'un exercice, ce qui nous a permis de bien séparer ces taches.
+
+Pour cette partie, nous avons rajouté l'utilisation du Javascript qui permet
+d'avoir des évènements qui se passent \textbf{après} le chargement de la page.
+C'est en particulier ce qui permet un affichage agréable des exercices et de leur correction, et lorsqu'on créé de nouveaux exercices.
+
+La lecture de la musique se fait via HTML5, et nous avons appris à gérer l'enregistrement et l'utilisation du microphone de l'ordinateur avec l'outil \textbf{Recorder.js}\cite{recorderjs}.
 
 \subsection{Problèmes rencontrés}
+Nous avons eu énormement de soucis liés aux technologies que nous ne
+connaissions pas. Par exemple, l'apprentissage de Symfony a nécessité la (re-)lecture d'un livre, de la documentation du site officiel, et d'un site d'échange d'informations\cite{so} sur le sujet de la programmation lorsque l'on avait besoin d'aide.
 
+Symfony dispose d'un channel dédié\cite{freenode} pour pouvoir discuter à des
+connaisseurs de Symfony, chose que l'on a pu essayer sans grands résultats.
+
+Voici une liste des problèmes de développement qui nous est arrivé :
+
+\begin{itemize}
+	\item \textbf{Configuration des formulaires}. L'automatisation des 
+	formulaires de Symfony a un prix, et c'est sa complexité. Heureusement,
+	la documentation\cite{docform} est très complète.
+	\item Personnalisation des formulaires. 
+	\item \textbf{Utilisation de la base de données et des relations entre entités stockés}.
+\end{itemize}
+
+Ceux en gras sont ceux que nous avons su résoudre de manière suffisamment complète.
 
 \section*{Conlusion}
 This project made us learn a great deal of things in web development, and we
