@@ -23,13 +23,11 @@ class ListeningExercicesController extends Controller
 
     public function conversationsAction()
     {
-        return $this->render('TOEICTrainerBundle:ListeningExercices:index.html.twig');
-        //return $this->render('TOEICTrainerBundle:ListeningExercices:index.conversations.html.twig');
+        return $this->render('TOEICTrainerBundle:ListeningExercices:index.conversations.html.twig');
     }
 
     public function talksAction()
     {
-        return $this->render('TOEICTrainerBundle:ListeningExercices:index.html.twig');
-        //return $this->render('TOEICTrainerBundle:ListeningExercices:index.talks.html.twig');
+        return $this->render('TOEICTrainerBundle:ListeningExercices:index.talks.html.twig');
     }
 }

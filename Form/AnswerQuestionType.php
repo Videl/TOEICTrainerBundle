@@ -5,6 +5,7 @@ namespace TN\TOEICTrainerBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class AnswerQuestionType extends AbstractType
 {
@@ -15,9 +16,21 @@ class AnswerQuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('question')
-            ->add('correctAnswer')
-        ;
+            ->add('question', 'entity', 
+                array(
+                    'class' => 'TOEICTrainerBundle:AudioFile', 
+                    'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('af')
+                    ->where("af.type = 'Question'");
+                }))
+            ->add('correctAnswer', 'entity',
+                array(
+                    'class' => 'TOEICTrainerBundle:AudioFile', 
+                    'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('af')
+                    ->where("af.type = 'Answer'");
+                }
+            ));
     }
     
     /**

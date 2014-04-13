@@ -30,9 +30,25 @@ tn.toeic.exercices.main_page.listening.conversations:
     pattern:  /listening/conversations
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:conversations" }
 
+tn.toeic.exercices.main_page.listening.conversations.train:
+    pattern:  /listening/conversations/train
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesConversations:show" }
+
+tn.toeic.exercices.main_page.listening.conversations.train.answer:
+    pattern:  /listening/conversations/train/{id}/answer/{result}
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesConversations:showAnswer" }
+
 tn.toeic.exercices.main_page.listening.talks:
     pattern:  /listening/talks
     defaults: { _controller: "TOEICTrainerBundle:ListeningExercices:talks" }
+
+tn.toeic.exercices.main_page.listening.talks.train:
+    pattern:  /listening/talks/train
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesTalks:show" }
+
+tn.toeic.exercices.main_page.listening.talks.train.answer:
+    pattern:  /listening/talks/train/{id}/answer/{result}
+    defaults: { _controller: "TOEICTrainerBundle:ListeningExercicesTalks:showAnswer" }
 
 tn.toeic.exercices.main_page.reading:
     pattern:  /reading
