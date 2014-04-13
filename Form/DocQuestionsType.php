@@ -20,7 +20,7 @@ class DocQuestionsType extends AbstractType
                 'attr' => array('onchange' => 'switchDoc(this)'),
                 ))
             ->add('AQPairs', 'collection', array(
-                'type' => new AnswerQuestionType(),
+                'type' => new AnswerQuestionExerciceType(),
                 'label' => "Choose the question/answers you want.",                
                 'allow_add' => true,
                 'by_reference' => false,

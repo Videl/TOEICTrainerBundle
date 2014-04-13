@@ -75,7 +75,7 @@ class ReadingExercicesDocHoleController extends Controller
 
         $logger = $this->get('logger');
         $user_data = $form_data['wordDocHoles'];
-        print_r($user_data);
+        
         $temp = array();
         $i = 0;
 
