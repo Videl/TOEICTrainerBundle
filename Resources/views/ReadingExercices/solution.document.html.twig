@@ -64,9 +64,7 @@
 {% block javascripts %}
 <script>
 originalText = {{ correct_entity.document.document|json_encode|raw }};
-/*
-    {{ dump(user_response)}}
- */
+
 places = [
             {% for hole in correct_entity.wordDocHoles %}{{ hole }},{% endfor %}
          ];
