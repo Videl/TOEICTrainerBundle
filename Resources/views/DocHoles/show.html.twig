@@ -1,14 +1,10 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocHoles</h1>
+    <h1>Document With Hole</h1>
 
     <table class="record_properties table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
             <tr>
                 <th>Document</th>
                 <td>{{ entity.document }}</td>
@@ -27,7 +23,7 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('docholes') }}">
-            Back to the list
+            Back to the list of Documents With Holes
         </a>
     </li>
     <li>
@@ -35,6 +31,6 @@
             Edit
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    {# <li>{{ form(delete_form) }}</li> #}
 </ul>
 {% endblock %}

@@ -1,14 +1,18 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>AudioFile creation</h1>
+    <h1>Create a new Audio Entry</h1>
+    <p>You have to create a sound <strong>first</strong>. You can visit
+    <a href="{{path('audiofile_newSound')}}">this page</a> to create one.</p>
+    <p>Please be sure to write the transcription of the audio! We can create other exercises with it.</p>
+    <p>Please double check the <strong>Type</strong>. If you have the wrong one, don't worry though, you can edit it later.</p>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('audiofile') }}">
-            Back to the list
+            See the list of Audio Entries we have
         </a>
     </li>
 </ul>

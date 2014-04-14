@@ -1,30 +1,38 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocHoles list</h1>
+    <h1>List of Document With Holes</h1>
 
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Worddocholes</th>
+                <th>Document</th>
+                <th>Holes</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('docholes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.wordDocHoles }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('docholes_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('docholes_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    {{ entity.document }}
+                </td>
+                <td>
+                    <p>
+                        {% for hole in entity.wordDocHoles %}
+                            {{ hole }},
+                        {% endfor %}
+                    </p>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('docholes_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('docholes_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
@@ -34,7 +42,7 @@
         <ul>
         <li>
             <a href="{{ path('docholes_new') }}">
-                Create a new entry
+                Create a new Document With Holes
             </a>
         </li>
     </ul>

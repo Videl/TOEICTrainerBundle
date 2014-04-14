@@ -1,13 +1,9 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 {% block body -%}
-    <h1>WrittenDocument</h1>
+    <h1>View a Written Document</h1>
 
     <table class="record_properties table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
             <tr>
                 <th>Document</th>
                 <td>{{ entity.document }}</td>
@@ -22,7 +18,7 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('writtendocument') }}">
-            Back to the list
+            Back to the list of Written Documents
         </a>
     </li>
     <li>
@@ -30,6 +26,6 @@
             Edit
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    {# <li>{{ form(delete_form) }}</li> #}
 </ul>
 {% endblock %}

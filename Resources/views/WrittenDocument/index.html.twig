@@ -1,12 +1,11 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>WrittenDocument list</h1>
+    <h1>List of Written Documents</h1>
 
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Document</th>
                 <th>Published</th>
                 <th>Actions</th>
@@ -15,7 +14,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('writtendocument_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.document }}</td>
                 <td>{% if entity.published %}{{ entity.published|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
@@ -36,7 +34,7 @@
         <ul>
         <li>
             <a href="{{ path('writtendocument_new') }}">
-                Create a new entry
+                Create a new Written Document
             </a>
         </li>
     </ul>

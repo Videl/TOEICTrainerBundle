@@ -20,7 +20,7 @@ class DocHolesExerciceType extends AbstractType
                 'required' => false,
                 )) // <- this bit will be hidden, I use this to get the data
             ->add('wordDocHoles', 'collection', array(
-                'type' => 'integer',
+                'type' => 'text',
                 'allow_add' => true,
                 'by_reference' => false,
                 'allow_delete' => true,

@@ -1,16 +1,17 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>AnswerQuestion edit</h1>
+    <h1>Edit Questions/Answers</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('answerquestion') }}">
-            Back to the list
+            See the  list of Questions/Answers we have
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+
+    {# <li>{{ form(delete_form) }}</li> #}
 </ul>
 {% endblock %}

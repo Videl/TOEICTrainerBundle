@@ -3,11 +3,19 @@
 {% form_theme form _self %}
 
 {% block body -%}
-    <h1>DocHoles creation</h1>
+    <h1>Creation of a Document With Holes</h1>
 
-    {# 
-    {{ form(form) }}
-	#}
+    <ol>
+        <li>
+            Choose the document you want to edit.
+        </li>
+        <li>
+            Choose the words you want to hide in a new field.
+        </li>
+    </ol>
+
+    <p>Click the link "Remove another word!" <strong>to create a new field</strong>. Just write the number inside it!</p>
+    <p>Also: you can remove any field by clicking on the "Delete this field" link</p>
 
 	{{ form_start(form) }}
     {# render the task's only field: document #}

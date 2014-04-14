@@ -1,12 +1,11 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>AnswerQuestion list</h1>
+    <h1>List of current Questions/Answers</h1>
 
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Question</th>
                 <th>Answer</th>
                 <th>Actions</th>
@@ -15,7 +14,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('answerquestion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.question.getWebPath()}) }}"></audio></td>
                 <td><audio controls src="{{ asset('%path%')|replace({'%path%': entity.correctAnswer.getWebPath()}) }}"></audio></td>
                 <td>
@@ -33,10 +31,10 @@
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('answerquestion_new') }}">
-                Create a new entry
+                Create a new Question/Answer
             </a>
         </li>
     </ul>

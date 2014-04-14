@@ -1,39 +1,57 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocQuestions list</h1>
+    <h1>List of Documents With Questions</h1>
 
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Document</th>
+                <th>Questions</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('docquestions_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('docquestions_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('docquestions_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    {{ entity.document }}
+                </td>
+                <td>
+                    {% for pair in entity.aqpairs %}
+                        {{ pair.question.audioTranscript }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('docquestions_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('docquestions_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ol>
         <li>
-            <a href="{{ path('docquestions_new') }}">
-                Create a new entry
+            <a href="{{ path('writtendocument_new') }}">
+                Create a new Document
             </a>
         </li>
-    </ul>
+        <li>
+            <a href="{{ path('answerquestion_new') }}">
+                Create a new Question/Answer
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('docquestions_new') }}">
+                Create a new Document With Questions
+            </a>
+        </li>
+    </ol>
     {% endblock %}

@@ -1,14 +1,13 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>AudioFile list</h1>
+    <h1>List of Audio Entries</h1>
 
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
-                <th>Audiotranscript</th>
+                <th>Audio Transcript</th>
                 <th>Type</th>
                 <th>File</th>
                 <th>Actions</th>
@@ -17,7 +16,6 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('audiofile_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.audioTranscript }}</td>
                 <td>
@@ -51,7 +49,7 @@
         </tbody>
     </table>
         <br>
-        <ol>
+    <ol>
         <li>
             <a href="{{ path('audiofile_newSound') }}">
                 Create a new sound

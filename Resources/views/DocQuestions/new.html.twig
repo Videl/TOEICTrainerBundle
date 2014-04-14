@@ -1,7 +1,7 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocQuestions creation</h1>
+    <h1>Create a new Document With Questions</h1>
 
 	{{ form_start(form) }}
     {# render the task's only field: document #}
@@ -32,7 +32,7 @@
         <ul class="record_actions">
     <li>
         <a href="{{ path('docquestions') }}">
-            Back to the list
+            Back to the list of Documents With Questions
         </a>
     </li>
 </ul>

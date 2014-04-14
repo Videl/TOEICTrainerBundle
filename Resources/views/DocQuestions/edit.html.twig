@@ -1,7 +1,7 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocQuestions edition</h1>
+    <h1>Edition of Document With Questions</h1>
 
 	{{ form_start(edit_form) }}
     {# render the task's only field: document #}
@@ -36,7 +36,7 @@
             Back to the list
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    {# <li>{{ form(delete_form) }}</li> #}
 </ul>
 {% endblock %}
 

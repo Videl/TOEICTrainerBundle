@@ -1,8 +1,19 @@
 {% extends 'TOEICTrainerBundle::base.html.twig' %}
 
 {% block body -%}
-    <h1>DocHoles edit</h1>
+    <h1>Edit a Document With Holes</h1>
+    
+    <ol>
+        <li>
+            Choose the document you want to edit.
+        </li>
+        <li>
+            Choose the words you want to hide in a new field.
+        </li>
+    </ol>
 
+    <p>Click the link "Remove another word!" <strong>to create a new field</strong>. Just write the number inside it!</p>
+    <p>Also: you can remove any field by clicking on the "Delete this field" link</p>
 
     {# 
     {{ form(form) }}
@@ -26,8 +37,7 @@
         {# iterate over each existing address and render some fields: city #}
         {% for wordHoles in edit_form.wordDocHoles %}
             <li>
-                
-		        	{{ form_row(wordHoles) }}
+	        	{{ form_row(wordHoles) }}
 		    </li>
         {% endfor %}
     </ul>
@@ -41,7 +51,7 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('docholes') }}">
-                Back to the list
+                Back to the list of Document With Holes
             </a>
         </li>
     </ul>
@@ -97,7 +107,7 @@ function addHoleForm($collectionHolder, $newLinkLi) {
 }
 
 function addHoleFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#">delete this tag</a>');
+    var $removeFormA = $('<a href="#">Delete this field</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
@@ -112,7 +122,7 @@ function addHoleFormDeleteLink($tagFormLi) {
 var $collectionHolder;
 
 // setup an "add a tag" link
-var $addTagLink = $('<a href="#" class="add_tag_link">Add a new hole</a>');
+var $addTagLink = $('<a href="#" class="add_tag_link">Remove another word!</a>');
 var $newLinkLi = $('<li></li>').append($addTagLink);
 
 jQuery(document).ready(function() {
